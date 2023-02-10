@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "xNose.Test", "xNose.Test\xN
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "xNose.Vsix", "xNose.Vsix\xNose.Vsix.csproj", "{3177057C-7ED3-4CE3-B070-5B041C89EAE3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xNose.Core", "xNose.Core\xNose.Core.csproj", "{52A90DCB-93F3-4E56-A1FC-5341282B9B2A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "xNose.Core", "xNose.Core\xNose.Core.csproj", "{52A90DCB-93F3-4E56-A1FC-5341282B9B2A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xNose.Example.Test", "xNose.Example.Test\xNose.Example.Test.csproj", "{FD6F3ABC-AA9B-400D-AD09-813C7675998B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{52A90DCB-93F3-4E56-A1FC-5341282B9B2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{52A90DCB-93F3-4E56-A1FC-5341282B9B2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{52A90DCB-93F3-4E56-A1FC-5341282B9B2A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD6F3ABC-AA9B-400D-AD09-813C7675998B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD6F3ABC-AA9B-400D-AD09-813C7675998B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD6F3ABC-AA9B-400D-AD09-813C7675998B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD6F3ABC-AA9B-400D-AD09-813C7675998B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

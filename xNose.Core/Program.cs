@@ -46,6 +46,19 @@ namespace xNose.Core
                 Console.WriteLine($"Finished loading solution '{solutionPath}'");
 
                 // TODO: Do analysis on the projects in the loaded solution
+                var proejct = solution.Projects.FirstOrDefault(p => string.Equals(p.Name, "xNose.Example.Test"));
+
+                foreach (var document in proejct.Documents)
+                {
+                    var tree = await document.GetSyntaxTreeAsync();
+                    var root = (CompilationUnitSyntax)tree.GetRoot();
+                    var classes = root.DescendantNodes().OfType<MethodDeclarationSyntax>();
+
+                    foreach (var classDeclaration in classes)
+                    {
+                        Console.WriteLine("  " + classDeclaration.Identifier.ValueText);
+                    }
+                }
             }
         }
 

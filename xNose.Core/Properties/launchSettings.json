@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "xNose.Core": {
+      "commandName": "Project",
+      "commandLineArgs": "E:\\Programming\\C#\\xNose\\xNose.sln"
+    }
+  }
+}
