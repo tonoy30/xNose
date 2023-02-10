@@ -1,16 +1,14 @@
 ﻿using Microsoft.Build.Locator;
 using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.MSBuild;
 using System;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using xNose.Core.Visitors;
 
 namespace xNose.Core
 {
-    internal class Program
+    public static class Program
     {
         static async Task Main(string[] args)
         {
@@ -81,20 +79,6 @@ namespace xNose.Core
                     return visualStudioInstances[instanceNumber - 1];
                 }
                 Console.WriteLine("Input not accepted, try again.");
-            }
-        }
-
-        private class ConsoleProgressReporter : IProgress<ProjectLoadProgress>
-        {
-            public void Report(ProjectLoadProgress loadProgress)
-            {
-                var projectDisplay = Path.GetFileName(loadProgress.FilePath);
-                if (loadProgress.TargetFramework != null)
-                {
-                    projectDisplay += $" ({loadProgress.TargetFramework})";
-                }
-
-                Console.WriteLine($"{loadProgress.Operation,-15} {loadProgress.ElapsedTime,-15:m\\:ss\\.fffffff} {projectDisplay}");
             }
         }
     }
