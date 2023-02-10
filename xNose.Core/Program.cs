@@ -6,6 +6,7 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using xNose.Core.Visitors;
 
 namespace xNose.Core
 {
@@ -41,18 +42,20 @@ namespace xNose.Core
                 Console.WriteLine($"Finished loading solution '{solutionPath}'");
 
                 // TODO: Do analysis on the projects in the loaded solution
-                var proejct = solution.Projects.FirstOrDefault(p => string.Equals(p.Name, "xNose.Example.Test"));
+                var project = solution.Projects.FirstOrDefault(p => string.Equals(p.Name, "xNose.Example.Test"));
 
-                foreach (var document in proejct.Documents)
+                var compilation = await project.GetCompilationAsync();
+
+                var classVisitor = new ClassVirtualizationVisitor();
+
+                foreach (var syntaxTree in compilation.SyntaxTrees)
                 {
-                    var tree = await document.GetSyntaxTreeAsync();
-                    var root = (CompilationUnitSyntax)tree.GetRoot();
-                    var classes = root.DescendantNodes().OfType<MethodDeclarationSyntax>();
+                    classVisitor.Visit(syntaxTree.GetRoot());
+                }
 
-                    foreach (var classDeclaration in classes)
-                    {
-                        Console.WriteLine("  " + classDeclaration.Identifier.ValueText);
-                    }
+                foreach (var classDeclaration in classVisitor.Classes)
+                {
+                    Console.WriteLine("  " + classDeclaration.Identifier.ValueText);
                 }
             }
         }
