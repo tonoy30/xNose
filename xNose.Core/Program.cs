@@ -1,9 +1,11 @@
 ﻿using Microsoft.Build.Locator;
 using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.MSBuild;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using xNose.Core.Smells;
 using xNose.Core.Visitors;
 
 namespace xNose.Core
@@ -53,8 +55,17 @@ namespace xNose.Core
 
                 foreach (var classDeclaration in classVisitor.Classes)
                 {
-                    Console.WriteLine("  " + classDeclaration.Identifier.ValueText);
+                    Console.WriteLine("Class Name -> " + classDeclaration.Identifier.ValueText);
                 }
+                var emptyTest = new EmptyTestSmell();
+                foreach (var classDeclaration in classVisitor.Methods)
+                {
+                    emptyTest.Node = classDeclaration;
+                    Console.WriteLine("Method Name -> " + classDeclaration.Identifier.ValueText);
+                    Console.WriteLine("Method Body -> " + classDeclaration.Body);
+                    Console.WriteLine("Method Has Test Smell -> " + emptyTest.HasSmell());
+                }
+
             }
         }
 

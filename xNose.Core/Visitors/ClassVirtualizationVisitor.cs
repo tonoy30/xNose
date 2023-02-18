@@ -11,6 +11,7 @@ namespace xNose.Core.Visitors
         const string pattern = @"Test";
 
         public List<ClassDeclarationSyntax> Classes { get; set; } = new List<ClassDeclarationSyntax>();
+        public List<MethodDeclarationSyntax> Methods { get; set; } = new List<MethodDeclarationSyntax>();
 
         public override SyntaxNode VisitClassDeclaration(ClassDeclarationSyntax node)
         {
@@ -21,6 +22,17 @@ namespace xNose.Core.Visitors
             if(startOrEndWithTest)
             {
                 Classes.Add(node);
+                return node;
+            }
+            return null;
+        }
+        public override SyntaxNode VisitMethodDeclaration(MethodDeclarationSyntax node)
+        {
+            node = (MethodDeclarationSyntax)base.VisitMethodDeclaration(node);
+            var startOrEndWithTest = Regex.IsMatch(node.Identifier.ValueText, pattern);
+            if(startOrEndWithTest)
+            {
+                Methods.Add(node);
                 return node;
             }
             return null;
