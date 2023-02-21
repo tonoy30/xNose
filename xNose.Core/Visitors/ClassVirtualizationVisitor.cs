@@ -26,6 +26,7 @@ namespace xNose.Core.Visitors
             }
             return null;
         }
+
         public override SyntaxNode VisitMethodDeclaration(MethodDeclarationSyntax node)
         {
             node = (MethodDeclarationSyntax)base.VisitMethodDeclaration(node);

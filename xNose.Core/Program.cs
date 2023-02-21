@@ -53,18 +53,22 @@ namespace xNose.Core
                     classVisitor.Visit(syntaxTree.GetRoot());
                 }
 
+                var emptyTest = new EmptyTestSmell();
+
                 foreach (var classDeclaration in classVisitor.Classes)
                 {
                     Console.WriteLine("Class Name -> " + classDeclaration.Identifier.ValueText);
+                   
+                    foreach (var methodDeclaration in classVisitor.Methods)
+                    {
+                        emptyTest.Node = methodDeclaration;
+                        Console.WriteLine("Method Name -> " + methodDeclaration.Identifier.ValueText);
+                        Console.WriteLine("Method Body -> " + methodDeclaration.Body);
+                        Console.WriteLine("Method Has Test Smell -> " + emptyTest.HasSmell());
+                    }
                 }
-                var emptyTest = new EmptyTestSmell();
-                foreach (var classDeclaration in classVisitor.Methods)
-                {
-                    emptyTest.Node = classDeclaration;
-                    Console.WriteLine("Method Name -> " + classDeclaration.Identifier.ValueText);
-                    Console.WriteLine("Method Body -> " + classDeclaration.Body);
-                    Console.WriteLine("Method Has Test Smell -> " + emptyTest.HasSmell());
-                }
+
+                
 
             }
         }
