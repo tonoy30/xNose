@@ -1,8 +1,8 @@
 ﻿using Microsoft.Build.Locator;
 using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.MSBuild;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using xNose.Core.Smells;
@@ -53,23 +53,29 @@ namespace xNose.Core
                     classVisitor.Visit(syntaxTree.GetRoot());
                 }
 
-                var emptyTest = new EmptyTestSmell();
+               
+                var testSmells = new List<ASmell> {
+					new EmptyTestSmell(),
+                    new ConditionalTestSmell()
+				};
 
                 foreach (var classDeclaration in classVisitor.Classes)
                 {
                     Console.WriteLine("Class Name -> " + classDeclaration.Identifier.ValueText);
                    
                     foreach (var methodDeclaration in classVisitor.Methods)
-                    {
-                        emptyTest.Node = methodDeclaration;
-                        Console.WriteLine("Method Name -> " + methodDeclaration.Identifier.ValueText);
-                        Console.WriteLine("Method Body -> " + methodDeclaration.Body);
-                        Console.WriteLine("Method Has Test Smell -> " + emptyTest.HasSmell());
+                    { 
+						Console.WriteLine("\tMethod Name -> " + methodDeclaration.Identifier.ValueText);
+						Console.WriteLine("\tMethod Body -> " + methodDeclaration.Body);
+                        foreach (var smell in testSmells)
+                        {
+                            smell.Node = methodDeclaration;
+                            Console.WriteLine($"\t\t{smell.Name()} -> {(smell.HasSmell() ? "Found" : "Not Found")}");
+                        }
                     }
                 }
 
-                
-
+         
             }
         }
 

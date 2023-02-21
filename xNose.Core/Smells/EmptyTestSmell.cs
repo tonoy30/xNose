@@ -5,7 +5,6 @@ namespace xNose.Core.Smells
 {
     public class EmptyTestSmell : ASmell
     {
-        public MethodDeclarationSyntax Node { get; set; }
         public override string Name()
         {
             return "Empty Test Smell";

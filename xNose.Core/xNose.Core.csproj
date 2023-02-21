@@ -16,4 +16,10 @@
     <PackageReference Include="Microsoft.CodeAnalysis.Workspaces.MSBuild" Version="4.4.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Walkers\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Walkers\" />
+  </ItemGroup>
 </Project>

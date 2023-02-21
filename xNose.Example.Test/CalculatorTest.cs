@@ -6,7 +6,10 @@ namespace xNose.Example.Test
         [Fact]
         public void TestAdd()
         {
-
+            if(true)
+            {
+                Assert.Equal(1 + 1, 2);
+            }
         }
     }
 }
