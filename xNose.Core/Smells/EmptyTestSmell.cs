@@ -7,7 +7,7 @@ namespace xNose.Core.Smells
     {
         public override string Name()
         {
-            return "Empty Test Smell";
+            return nameof(EmptyTestSmell);
         }
 
         public override bool HasSmell()

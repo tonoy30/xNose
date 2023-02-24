@@ -43,9 +43,9 @@ namespace xNose.Core
 
                 // TODO: Do analysis on the projects in the loaded solution
                 var project = solution.Projects.FirstOrDefault(p => string.Equals(p.Name, "xNose.Example.Test"));
-
+                
                 var compilation = await project.GetCompilationAsync();
-
+               
                 var classVisitor = new ClassVirtualizationVisitor();
 
                 foreach (var syntaxTree in compilation.SyntaxTrees)
@@ -56,18 +56,22 @@ namespace xNose.Core
                
                 var testSmells = new List<ASmell> {
 					new EmptyTestSmell(),
-                    new ConditionalTestSmell()
+                    new ConditionalTestSmell(),
+                    new CyclomaticComplexityTestSmell(),
+                    new ExpectedExceptionTestSmell()
 				};
 
-                foreach (var classDeclaration in classVisitor.Classes)
+                foreach (var (classDeclaration, methodDeclarations) in classVisitor.ClassWithMethods)
                 {
+                    
                     Console.WriteLine("Class Name -> " + classDeclaration.Identifier.ValueText);
-                   
-                    foreach (var methodDeclaration in classVisitor.Methods)
-                    { 
-						Console.WriteLine("\tMethod Name -> " + methodDeclaration.Identifier.ValueText);
-						Console.WriteLine("\tMethod Body -> " + methodDeclaration.Body);
-                        foreach (var smell in testSmells)
+                    
+                    foreach (var methodDeclaration in methodDeclarations)
+                    {
+
+                        Console.WriteLine("\tMethod Name -> " + methodDeclaration.Identifier.ValueText);
+                        Console.WriteLine("\tMethod Body -> " + methodDeclaration.Body);
+						foreach (var smell in testSmells)
                         {
                             smell.Node = methodDeclaration;
                             Console.WriteLine($"\t\t{smell.Name()} -> {(smell.HasSmell() ? "Found" : "Not Found")}");
@@ -75,7 +79,6 @@ namespace xNose.Core
                     }
                 }
 
-         
             }
         }
 

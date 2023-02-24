@@ -1,5 +1,6 @@
-﻿using Microsoft.CodeAnalysis.CSharp.Syntax;
-using xNose.Core.Walkers;
+﻿using System.Linq;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
+
 
 namespace xNose.Core.Smells
 {
@@ -7,13 +8,19 @@ namespace xNose.Core.Smells
 	{
         public override bool HasSmell()
         {
-            var tree = Node.Body.SyntaxTree;
-            var conditionalWalker = new ConditionalWalker();
-            conditionalWalker.StartWalker(tree.GetRoot());
-            var warnings = conditionalWalker.Warnings;
+			var root = GetRoot();
 
-            return warnings.Length != 0; 
-        }
+			var conditionalCount = root.DescendantNodes()
+								   .OfType<IfStatementSyntax>()
+								   .Count()
+							+ root.DescendantNodes()
+									.OfType<ElseClauseSyntax>()
+									.Count()
+							+ root.DescendantNodes()
+									.OfType<SwitchStatementSyntax>()
+									.Count();
+			return conditionalCount > 0;
+		}
 
         public override string Name()
         {
@@ -22,4 +29,3 @@ namespace xNose.Core.Smells
         
     }
 }
-

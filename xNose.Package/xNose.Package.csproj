@@ -35,6 +35,9 @@
     <None Update="tools\*.ps1" CopyToOutputDirectory="PreserveNewest" Pack="true" PackagePath="" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.Metrics" Version="3.3.4" />
+  </ItemGroup>
   <Target Name="_AddAnalyzersToOutput">
     <ItemGroup>
       <TfmSpecificPackageFile Include="$(OutputPath)\xNose.dll" PackagePath="analyzers/dotnet/cs" />

@@ -14,12 +14,7 @@
     <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="4.4.0" />
     <PackageReference Include="Microsoft.CodeAnalysis.VisualBasic.Workspaces" Version="4.4.0" />
     <PackageReference Include="Microsoft.CodeAnalysis.Workspaces.MSBuild" Version="4.4.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Metrics" Version="3.3.4" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Remove="Walkers\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Walkers\" />
-  </ItemGroup>
 </Project>

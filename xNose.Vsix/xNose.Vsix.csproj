@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.VSSDK.BuildTools" Version="17.4.2120" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Metrics" Version="3.3.4" />
   </ItemGroup>
 
   <PropertyGroup>
