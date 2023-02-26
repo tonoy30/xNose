@@ -80,7 +80,11 @@ namespace xNose.Core
                         foreach (var smell in testSmells)
                         {
                             smell.Node = methodDeclaration;
-                            var message = $"{smell.Name()} -- {(smell.HasSmell() ? "Found" : "Not Found")}";
+                            var message = new MethodReporterMessage
+                            {
+                                Name = smell.Name(),
+                                Status = smell.HasSmell() ? "Found" : "Not Found"
+                            };
                             methodReporter.AddMessage(message);
                         }
                         classReporter.AddMethodReport(methodReporter);

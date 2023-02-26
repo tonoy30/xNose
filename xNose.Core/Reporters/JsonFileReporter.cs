@@ -7,14 +7,14 @@ namespace xNose.Core.Reporters
 {
     public class JsonFileReporter
     {
-        public List<ClassReporter> ClassReporters { get; private set; } = new List<ClassReporter>();
+        public List<ClassReporter> Classes { get; private set; } = new List<ClassReporter>();
         public string SolutionPath { get; private set; }
 
         public JsonFileReporter(string solutionPath) => SolutionPath = solutionPath;
 
         public void AddClassReporter(ClassReporter reporter)
         {
-            ClassReporters.Add(reporter);
+            Classes.Add(reporter);
         }
         public async Task SaveReportAsync()
         {
@@ -22,7 +22,7 @@ namespace xNose.Core.Reporters
             var dirName = Path.Join(Path.GetDirectoryName(SolutionPath), fileName);
             using var createStream = File.Create(dirName);
             var options = new JsonSerializerOptions { WriteIndented = true };
-            await JsonSerializer.SerializeAsync(createStream, ClassReporters, options);
+            await JsonSerializer.SerializeAsync(createStream, Classes, options);
             await createStream.DisposeAsync();
         }
     }
@@ -31,10 +31,10 @@ namespace xNose.Core.Reporters
     {
         public string Name { get; set; }
         public string Message { get; set; }
-        public List<MethodReporter> MethodReporters { get; private set; } = new List<MethodReporter>();
+        public List<MethodReporter> Methods { get; private set; } = new List<MethodReporter>();
         public void AddMethodReport(MethodReporter reporter)
         {
-            MethodReporters.Add(reporter);
+            Methods.Add(reporter);
         }
     }
 
@@ -42,11 +42,16 @@ namespace xNose.Core.Reporters
     {
         public string Name { get; set; }
         public string Body { get; set; }
-        public List<string> Messages { get; private set; } = new List<string>();
-        public void AddMessage(string message)
+        public List<MethodReporterMessage> Smells { get; private set; } = new List<MethodReporterMessage>();
+        public void AddMessage(MethodReporterMessage message)
         {
-            Messages.Add(message);
+            Smells.Add(message);
         }
+    }
+    public class MethodReporterMessage
+    {
+        public string Name { get; set; }
+        public string Status { get; set; }
     }
 }
 
