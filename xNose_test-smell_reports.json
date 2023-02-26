@@ -22,6 +22,10 @@
           {
             "Name": "ExpectedExceptionTestSmell",
             "Status": "Not Found"
+          },
+          {
+            "Name": "AssertionRouletteTestSmell",
+            "Status": "Not Found"
           }
         ]
       },
@@ -43,6 +47,10 @@
           },
           {
             "Name": "ExpectedExceptionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "AssertionRouletteTestSmell",
             "Status": "Not Found"
           }
         ]
@@ -72,6 +80,36 @@
           {
             "Name": "ExpectedExceptionTestSmell",
             "Status": "Not Found"
+          },
+          {
+            "Name": "AssertionRouletteTestSmell",
+            "Status": "Not Found"
+          }
+        ]
+      },
+      {
+        "Name": "AssertionRouletteTest",
+        "Body": "{\r\n    Assert.Equal(1 \u002B 1, 2);\r\n    Assert.Equal(1 \u002B 2, 3);\r\n    Assert.Equal(2 \u002B 2, 4);\r\n}",
+        "Smells": [
+          {
+            "Name": "EmptyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConditionalTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "CyclomaticComplexityTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ExpectedExceptionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "AssertionRouletteTestSmell",
+            "Status": "Found"
           }
         ]
       }

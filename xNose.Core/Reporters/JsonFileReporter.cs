@@ -18,7 +18,7 @@ namespace xNose.Core.Reporters
         }
         public async Task SaveReportAsync()
         {
-            var fileName = $"{Path.GetFileName(SolutionPath).Replace(".sln", "")}_test-smell_reports.json";
+            var fileName = $"{Path.GetFileName(SolutionPath).Replace(".sln", "").ToLowerInvariant()}_test_smell_reports.json";
             var dirName = Path.Join(Path.GetDirectoryName(SolutionPath), fileName);
             using var createStream = File.Create(dirName);
             var options = new JsonSerializerOptions { WriteIndented = true };
