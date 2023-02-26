@@ -5,7 +5,7 @@ namespace xNose.Example.Test
         [Fact]
         public void EmptyTest()
         {
-          
+
         }
     }
 }

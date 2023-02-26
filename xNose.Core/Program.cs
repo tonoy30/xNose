@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using xNose.Core.Reporters;
 using xNose.Core.Smells;
 using xNose.Core.Visitors;
 
@@ -24,7 +25,7 @@ namespace xNose.Core
 
             Console.WriteLine($"Using MSBuild at '{instance.MSBuildPath}' to load projects.");
 
-            // NOTE: Be sure to register an instance with the MSBuildLocator 
+            // NOTE: Be sure to register an instance with the MSBuildLocator
             //       before calling MSBuildWorkspace.Create()
             //       otherwise, MSBuildWorkspace won't MEF compose.
             MSBuildLocator.RegisterInstance(instance);
@@ -43,9 +44,9 @@ namespace xNose.Core
 
                 // TODO: Do analysis on the projects in the loaded solution
                 var project = solution.Projects.FirstOrDefault(p => string.Equals(p.Name, "xNose.Example.Test"));
-                
+
                 var compilation = await project.GetCompilationAsync();
-               
+
                 var classVisitor = new ClassVirtualizationVisitor();
 
                 foreach (var syntaxTree in compilation.SyntaxTrees)
@@ -53,32 +54,40 @@ namespace xNose.Core
                     classVisitor.Visit(syntaxTree.GetRoot());
                 }
 
-               
+
                 var testSmells = new List<ASmell> {
-					new EmptyTestSmell(),
+                    new EmptyTestSmell(),
                     new ConditionalTestSmell(),
                     new CyclomaticComplexityTestSmell(),
                     new ExpectedExceptionTestSmell()
-				};
+                };
+
+                var reporter = new JsonFileReporter(solutionPath);
 
                 foreach (var (classDeclaration, methodDeclarations) in classVisitor.ClassWithMethods)
                 {
-                    
-                    Console.WriteLine("Class Name -> " + classDeclaration.Identifier.ValueText);
-                    
+                    var classReporter = new ClassReporter
+                    {
+                        Name = classDeclaration.Identifier.ValueText
+                    };
                     foreach (var methodDeclaration in methodDeclarations)
                     {
-
-                        Console.WriteLine("\tMethod Name -> " + methodDeclaration.Identifier.ValueText);
-                        Console.WriteLine("\tMethod Body -> " + methodDeclaration.Body);
-						foreach (var smell in testSmells)
+                        var methodReporter = new MethodReporter
+                        {
+                            Name = methodDeclaration.Identifier.Text,
+                            Body = methodDeclaration.Body.NormalizeWhitespace().ToFullString()
+                        };
+                        foreach (var smell in testSmells)
                         {
                             smell.Node = methodDeclaration;
-                            Console.WriteLine($"\t\t{smell.Name()} -> {(smell.HasSmell() ? "Found" : "Not Found")}");
+                            var message = $"{smell.Name()} -- {(smell.HasSmell() ? "Found" : "Not Found")}";
+                            methodReporter.AddMessage(message);
                         }
+                        classReporter.AddMethodReport(methodReporter);
                     }
+                    reporter.AddClassReporter(classReporter);
                 }
-
+                await reporter.SaveReportAsync();
             }
         }
 
