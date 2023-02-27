@@ -64,7 +64,9 @@ namespace xNose.Core
                     new UnknownTestSmell(),
                     new RedundantPrintTestSmell(),
                     new SleepyTestSmell(),
-                    new IgnoreTestSmell()
+                    new IgnoreTestSmell(),
+                    new RedundantAssertionTestSmell(),
+                    new DuplicateAssertionTestSmell()
                 };
 
                 var reporter = new JsonFileReporter(solutionPath);

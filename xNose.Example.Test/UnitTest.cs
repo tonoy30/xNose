@@ -21,12 +21,28 @@ namespace xNose.Example.Test
         {
             Thread.Sleep(1000);
             Console.WriteLine("Hello");
+            Assert.Equal(true, true);
         }
 
         [Fact(Skip = "Skip This For Now")]
         public void SkippedTest()
         {
             Assert.Equal(1 + 1, 2);
+        }
+        [Fact]
+        public void TestConversion()
+        {
+            int result = Converter.ConvertToCelsius(32);
+            Assert.Equal(result, 0);
+
+            int result2 = Converter.ConvertToCelsius(68);
+            Assert.Equal(result2, 20);
+
+            int result3 = Converter.ConvertToFahrenheit(0);
+            Assert.Equal(result3, 32);
+
+            int result4 = Converter.ConvertToFahrenheit(20);
+            Assert.Equal(result4, 68);
         }
     }
 }

@@ -1,143 +1,11 @@
 [
   {
-    "Name": "CalculatorTest",
-    "Message": null,
-    "Methods": [
-      {
-        "Name": "TestAdd",
-        "Body": "{\r\n    if (true)\r\n    {\r\n        Assert.Equal(1 \u002B 1, 2);\r\n    }\r\n}",
-        "Smells": [
-          {
-            "Name": "EmptyTestSmell",
-            "Status": "Not Found"
-          },
-          {
-            "Name": "ConditionalTestSmell",
-            "Status": "Found"
-          },
-          {
-            "Name": "CyclomaticComplexityTestSmell",
-            "Status": "Not Found"
-          },
-          {
-            "Name": "ExpectedExceptionTestSmell",
-            "Status": "Not Found"
-          },
-          {
-            "Name": "AssertionRouletteTestSmell",
-            "Status": "Not Found"
-          },
-          {
-            "Name": "UnknownTestSmell",
-            "Status": "Not Found"
-          },
-          {
-            "Name": "RedundantPrintTestSmell",
-            "Status": "Not Found"
-          },
-          {
-            "Name": "SleepyTestSmell",
-            "Status": "Not Found"
-          },
-          {
-            "Name": "IgnoreTestSmell",
-            "Status": "Not Found"
-          }
-        ]
-      },
-      {
-        "Name": "TestCalculateGrade",
-        "Body": "{\r\n    var grade = 90;\r\n    if (grade \u003E= 90)\r\n    {\r\n        Console.WriteLine(\u0022You got an A!\u0022);\r\n    }\r\n    else if (grade \u003E= 80)\r\n    {\r\n        Console.WriteLine(\u0022You got a B!\u0022);\r\n    }\r\n    else if (grade \u003E= 70)\r\n    {\r\n        Console.WriteLine(\u0022You got a C!\u0022);\r\n    }\r\n    else if (grade \u003E= 60)\r\n    {\r\n        Console.WriteLine(\u0022You got a D!\u0022);\r\n    }\r\n    else if (grade \u003E= 50)\r\n    {\r\n        Console.WriteLine(\u0022You got an E!\u0022);\r\n    }\r\n    else if (grade \u003E= 40)\r\n    {\r\n        Console.WriteLine(\u0022You got an F!\u0022);\r\n    }\r\n    else if (grade \u003E= 30)\r\n    {\r\n        Console.WriteLine(\u0022You got an F!!\u0022);\r\n    }\r\n    else if (grade \u003E= 20)\r\n    {\r\n        Console.WriteLine(\u0022You got an F!!\u0022);\r\n    }\r\n    else\r\n    {\r\n        Console.WriteLine(\u0022You failed!\u0022);\r\n    }\r\n}",
-        "Smells": [
-          {
-            "Name": "EmptyTestSmell",
-            "Status": "Not Found"
-          },
-          {
-            "Name": "ConditionalTestSmell",
-            "Status": "Found"
-          },
-          {
-            "Name": "CyclomaticComplexityTestSmell",
-            "Status": "Found"
-          },
-          {
-            "Name": "ExpectedExceptionTestSmell",
-            "Status": "Not Found"
-          },
-          {
-            "Name": "AssertionRouletteTestSmell",
-            "Status": "Not Found"
-          },
-          {
-            "Name": "UnknownTestSmell",
-            "Status": "Found"
-          },
-          {
-            "Name": "RedundantPrintTestSmell",
-            "Status": "Found"
-          },
-          {
-            "Name": "SleepyTestSmell",
-            "Status": "Not Found"
-          },
-          {
-            "Name": "IgnoreTestSmell",
-            "Status": "Not Found"
-          }
-        ]
-      }
-    ]
-  },
-  {
     "Name": "UnitTest",
     "Message": null,
     "Methods": [
       {
-        "Name": "EmptyTest",
-        "Body": "{\r\n}",
-        "Smells": [
-          {
-            "Name": "EmptyTestSmell",
-            "Status": "Found"
-          },
-          {
-            "Name": "ConditionalTestSmell",
-            "Status": "Not Found"
-          },
-          {
-            "Name": "CyclomaticComplexityTestSmell",
-            "Status": "Not Found"
-          },
-          {
-            "Name": "ExpectedExceptionTestSmell",
-            "Status": "Not Found"
-          },
-          {
-            "Name": "AssertionRouletteTestSmell",
-            "Status": "Not Found"
-          },
-          {
-            "Name": "UnknownTestSmell",
-            "Status": "Found"
-          },
-          {
-            "Name": "RedundantPrintTestSmell",
-            "Status": "Not Found"
-          },
-          {
-            "Name": "SleepyTestSmell",
-            "Status": "Not Found"
-          },
-          {
-            "Name": "IgnoreTestSmell",
-            "Status": "Not Found"
-          }
-        ]
-      },
-      {
-        "Name": "AssertionRouletteTest",
-        "Body": "{\r\n    Assert.Equal(1 \u002B 1, 2);\r\n    Assert.Equal(1 \u002B 2, 3);\r\n    Assert.Equal(2 \u002B 2, 4);\r\n}",
+        "Name": "TestConversion",
+        "Body": "{\r\n    int result = Converter.ConvertToCelsius(32);\r\n    Assert.Equal(result, 0);\r\n    int result2 = Converter.ConvertToCelsius(68);\r\n    Assert.Equal(result2, 20);\r\n    int result3 = Converter.ConvertToFahrenheit(0);\r\n    Assert.Equal(result3, 32);\r\n    int result4 = Converter.ConvertToFahrenheit(20);\r\n    Assert.Equal(result4, 68);\r\n}",
         "Smells": [
           {
             "Name": "EmptyTestSmell",
@@ -173,90 +41,14 @@
           },
           {
             "Name": "IgnoreTestSmell",
-            "Status": "Not Found"
-          }
-        ]
-      },
-      {
-        "Name": "SleepTest",
-        "Body": "{\r\n    Thread.Sleep(1000);\r\n    Console.WriteLine(\u0022Hello\u0022);\r\n}",
-        "Smells": [
-          {
-            "Name": "EmptyTestSmell",
-            "Status": "Not Found"
-          },
-          {
-            "Name": "ConditionalTestSmell",
-            "Status": "Not Found"
-          },
-          {
-            "Name": "CyclomaticComplexityTestSmell",
-            "Status": "Not Found"
-          },
-          {
-            "Name": "ExpectedExceptionTestSmell",
-            "Status": "Not Found"
-          },
-          {
-            "Name": "AssertionRouletteTestSmell",
-            "Status": "Not Found"
-          },
-          {
-            "Name": "UnknownTestSmell",
             "Status": "Found"
           },
           {
-            "Name": "RedundantPrintTestSmell",
-            "Status": "Found"
-          },
-          {
-            "Name": "SleepyTestSmell",
-            "Status": "Found"
-          },
-          {
-            "Name": "IgnoreTestSmell",
-            "Status": "Not Found"
-          }
-        ]
-      },
-      {
-        "Name": "SkippedTest",
-        "Body": "{\r\n    Assert.Equal(1 \u002B 1, 2);\r\n}",
-        "Smells": [
-          {
-            "Name": "EmptyTestSmell",
+            "Name": "RedundantAssertionTestSmell",
             "Status": "Not Found"
           },
           {
-            "Name": "ConditionalTestSmell",
-            "Status": "Not Found"
-          },
-          {
-            "Name": "CyclomaticComplexityTestSmell",
-            "Status": "Not Found"
-          },
-          {
-            "Name": "ExpectedExceptionTestSmell",
-            "Status": "Not Found"
-          },
-          {
-            "Name": "AssertionRouletteTestSmell",
-            "Status": "Not Found"
-          },
-          {
-            "Name": "UnknownTestSmell",
-            "Status": "Not Found"
-          },
-          {
-            "Name": "RedundantPrintTestSmell",
-            "Status": "Not Found"
-          },
-          {
-            "Name": "SleepyTestSmell",
-            "Status": "Not Found"
-          },
-          {
-            "Name": "IgnoreTestSmell",
+            "Name": "DuplicateAssertionTestSmell",
             "Status": "Found"
           }
         ]
