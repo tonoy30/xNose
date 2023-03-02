@@ -72,7 +72,8 @@ namespace xNose.Core
                     new BoolInAssertEqualSmell(),
                     new EqualInAssertSmell(),
                     new SensitiveEqualitySmell(),
-                    new ConstructorInitializationTestSmell()
+                    new ConstructorInitializationTestSmell(),
+                    new ObscureInLineSetUpSmell()
                 };
 
                 var reporter = new JsonFileReporter(solutionPath);

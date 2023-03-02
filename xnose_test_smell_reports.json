@@ -74,6 +74,10 @@
           {
             "Name": "ConstructorInitializationTestSmell",
             "Status": "Not Found"
+          },
+          {
+            "Name": "ObscureInLineSetUpSmell",
+            "Status": "Not Found"
           }
         ]
       },
@@ -147,6 +151,10 @@
           },
           {
             "Name": "ConstructorInitializationTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ObscureInLineSetUpSmell",
             "Status": "Not Found"
           }
         ]
@@ -228,6 +236,10 @@
           {
             "Name": "ConstructorInitializationTestSmell",
             "Status": "Not Found"
+          },
+          {
+            "Name": "ObscureInLineSetUpSmell",
+            "Status": "Not Found"
           }
         ]
       },
@@ -301,6 +313,10 @@
           },
           {
             "Name": "ConstructorInitializationTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ObscureInLineSetUpSmell",
             "Status": "Not Found"
           }
         ]
@@ -376,6 +392,10 @@
           {
             "Name": "ConstructorInitializationTestSmell",
             "Status": "Not Found"
+          },
+          {
+            "Name": "ObscureInLineSetUpSmell",
+            "Status": "Not Found"
           }
         ]
       },
@@ -449,6 +469,10 @@
           },
           {
             "Name": "ConstructorInitializationTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ObscureInLineSetUpSmell",
             "Status": "Not Found"
           }
         ]
@@ -524,6 +548,10 @@
           {
             "Name": "ConstructorInitializationTestSmell",
             "Status": "Not Found"
+          },
+          {
+            "Name": "ObscureInLineSetUpSmell",
+            "Status": "Not Found"
           }
         ]
       },
@@ -598,6 +626,10 @@
           {
             "Name": "ConstructorInitializationTestSmell",
             "Status": "Not Found"
+          },
+          {
+            "Name": "ObscureInLineSetUpSmell",
+            "Status": "Not Found"
           }
         ]
       },
@@ -671,6 +703,10 @@
           },
           {
             "Name": "ConstructorInitializationTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ObscureInLineSetUpSmell",
             "Status": "Not Found"
           }
         ]
