@@ -70,7 +70,8 @@ namespace xNose.Core
                     new MagicNumberTestSmell(),
                     new EagerTestSmell(),
                     new BoolInAssertEqualSmell(),
-                    new EqualInAssertSmell()
+                    new EqualInAssertSmell(),
+                    new SensitiveEqualitySmell()
                 };
 
                 var reporter = new JsonFileReporter(solutionPath);
