@@ -66,6 +66,14 @@
           {
             "Name": "EqualInAssertSmell",
             "Status": "Not Found"
+          },
+          {
+            "Name": "SensitiveEqualitySmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConstructorInitializationTestSmell",
+            "Status": "Not Found"
           }
         ]
       },
@@ -131,6 +139,14 @@
           },
           {
             "Name": "EqualInAssertSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SensitiveEqualitySmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConstructorInitializationTestSmell",
             "Status": "Not Found"
           }
         ]
@@ -204,6 +220,14 @@
           {
             "Name": "EqualInAssertSmell",
             "Status": "Not Found"
+          },
+          {
+            "Name": "SensitiveEqualitySmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConstructorInitializationTestSmell",
+            "Status": "Not Found"
           }
         ]
       },
@@ -269,6 +293,14 @@
           },
           {
             "Name": "EqualInAssertSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SensitiveEqualitySmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConstructorInitializationTestSmell",
             "Status": "Not Found"
           }
         ]
@@ -336,6 +368,14 @@
           {
             "Name": "EqualInAssertSmell",
             "Status": "Not Found"
+          },
+          {
+            "Name": "SensitiveEqualitySmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConstructorInitializationTestSmell",
+            "Status": "Not Found"
           }
         ]
       },
@@ -401,6 +441,14 @@
           },
           {
             "Name": "EqualInAssertSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SensitiveEqualitySmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConstructorInitializationTestSmell",
             "Status": "Not Found"
           }
         ]
@@ -468,6 +516,14 @@
           {
             "Name": "EqualInAssertSmell",
             "Status": "Not Found"
+          },
+          {
+            "Name": "SensitiveEqualitySmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConstructorInitializationTestSmell",
+            "Status": "Not Found"
           }
         ]
       },
@@ -533,6 +589,14 @@
           },
           {
             "Name": "EqualInAssertSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SensitiveEqualitySmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConstructorInitializationTestSmell",
             "Status": "Not Found"
           }
         ]
@@ -600,6 +664,14 @@
           {
             "Name": "EqualInAssertSmell",
             "Status": "Found"
+          },
+          {
+            "Name": "SensitiveEqualitySmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConstructorInitializationTestSmell",
+            "Status": "Not Found"
           }
         ]
       }
