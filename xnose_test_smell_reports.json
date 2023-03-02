@@ -60,11 +60,11 @@
             "Status": "Not Found"
           },
           {
-            "Name": "BoolInAssertEqual",
+            "Name": "BoolInAssertEqualSmell",
             "Status": "Not Found"
           },
           {
-            "Name": "EqualInAssert",
+            "Name": "EqualInAssertSmell",
             "Status": "Not Found"
           }
         ]
@@ -126,11 +126,11 @@
             "Status": "Not Found"
           },
           {
-            "Name": "BoolInAssertEqual",
+            "Name": "BoolInAssertEqualSmell",
             "Status": "Not Found"
           },
           {
-            "Name": "EqualInAssert",
+            "Name": "EqualInAssertSmell",
             "Status": "Not Found"
           }
         ]
@@ -198,11 +198,11 @@
             "Status": "Not Found"
           },
           {
-            "Name": "BoolInAssertEqual",
+            "Name": "BoolInAssertEqualSmell",
             "Status": "Not Found"
           },
           {
-            "Name": "EqualInAssert",
+            "Name": "EqualInAssertSmell",
             "Status": "Not Found"
           }
         ]
@@ -264,11 +264,11 @@
             "Status": "Not Found"
           },
           {
-            "Name": "BoolInAssertEqual",
+            "Name": "BoolInAssertEqualSmell",
             "Status": "Not Found"
           },
           {
-            "Name": "EqualInAssert",
+            "Name": "EqualInAssertSmell",
             "Status": "Not Found"
           }
         ]
@@ -330,11 +330,11 @@
             "Status": "Not Found"
           },
           {
-            "Name": "BoolInAssertEqual",
+            "Name": "BoolInAssertEqualSmell",
             "Status": "Found"
           },
           {
-            "Name": "EqualInAssert",
+            "Name": "EqualInAssertSmell",
             "Status": "Not Found"
           }
         ]
@@ -396,11 +396,11 @@
             "Status": "Not Found"
           },
           {
-            "Name": "BoolInAssertEqual",
+            "Name": "BoolInAssertEqualSmell",
             "Status": "Not Found"
           },
           {
-            "Name": "EqualInAssert",
+            "Name": "EqualInAssertSmell",
             "Status": "Not Found"
           }
         ]
@@ -462,11 +462,11 @@
             "Status": "Found"
           },
           {
-            "Name": "BoolInAssertEqual",
+            "Name": "BoolInAssertEqualSmell",
             "Status": "Not Found"
           },
           {
-            "Name": "EqualInAssert",
+            "Name": "EqualInAssertSmell",
             "Status": "Not Found"
           }
         ]
@@ -528,11 +528,11 @@
             "Status": "Not Found"
           },
           {
-            "Name": "BoolInAssertEqual",
+            "Name": "BoolInAssertEqualSmell",
             "Status": "Found"
           },
           {
-            "Name": "EqualInAssert",
+            "Name": "EqualInAssertSmell",
             "Status": "Not Found"
           }
         ]
@@ -594,11 +594,11 @@
             "Status": "Not Found"
           },
           {
-            "Name": "BoolInAssertEqual",
+            "Name": "BoolInAssertEqualSmell",
             "Status": "Not Found"
           },
           {
-            "Name": "EqualInAssert",
+            "Name": "EqualInAssertSmell",
             "Status": "Found"
           }
         ]

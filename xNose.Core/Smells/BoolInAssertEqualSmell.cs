@@ -5,7 +5,7 @@ using Microsoft.CodeAnalysis;
 
 namespace xNose.Core.Smells
 {
-	public class BoolInAssertEqual : ASmell
+	public class BoolInAssertEqualSmell : ASmell
 	{
 
         public override bool HasSmell()
@@ -29,7 +29,7 @@ namespace xNose.Core.Smells
 
         public override string Name()
         {
-            return nameof(BoolInAssertEqual);
+            return nameof(BoolInAssertEqualSmell);
         }
     }
 }

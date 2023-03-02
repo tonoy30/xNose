@@ -4,7 +4,7 @@ using xNose.Core.Walkers;
 
 namespace xNose.Core.Smells
 {
-	public class EqualInAssert : ASmell
+	public class EqualInAssertSmell : ASmell
     {
 
         public override bool HasSmell()
@@ -26,7 +26,7 @@ namespace xNose.Core.Smells
 
         public override string Name()
         {
-            return nameof(EqualInAssert);
+            return nameof(EqualInAssertSmell);
         }
     }
 }
