@@ -50,5 +50,11 @@ namespace xNose.Example.Test
             var isCycleExist = Converter.IsCycleExist(5);
             Assert.Equal(true, isCycleExist);
         }
+        [Fact]
+        public void EqualInAssertTest()
+        {
+            Assert.True(Converter.IsCycleExist(4) == true);
+            Assert.False(Converter.IsCycleExist(5) == false);
+        }
     }
 }
