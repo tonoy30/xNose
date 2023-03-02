@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using F23.StringSimilarity;
 using xNose.Core.Reporters;
 using xNose.Core.Smells;
 using xNose.Core.Visitors;
@@ -77,9 +78,10 @@ namespace xNose.Core
                 };
 
                 var reporter = new JsonFileReporter(solutionPath);
-
+                
                 foreach (var (classDeclaration, methodDeclarations) in classVisitor.ClassWithMethods)
                 {
+                    List<string> methodBodyCollection = new List<string>();
                     var classReporter = new ClassReporter
                     {
                         Name = classDeclaration.Identifier.ValueText
@@ -91,6 +93,7 @@ namespace xNose.Core
                             Name = methodDeclaration.Identifier.Text,
                             Body = methodDeclaration.Body.NormalizeWhitespace().ToFullString()
                         };
+                        methodBodyCollection.Add(methodReporter.Body);
                         foreach (var smell in testSmells)
                         {
                             smell.Node = methodDeclaration;
@@ -103,12 +106,36 @@ namespace xNose.Core
                         }
                         classReporter.AddMethodReport(methodReporter);
                     }
+                    if(HasLackOfCohesion(methodBodyCollection))
+                    {
+                        classReporter.Message = "This class has Lack of Cohesion of Test Cases";
+                    }
+
                     reporter.AddClassReporter(classReporter);
                 }
                 await reporter.SaveReportAsync();
             }
         }
-
+        private static bool HasLackOfCohesion(List<string> methodBodyCollection)
+        {
+            var cosineInstance = new Cosine();
+            double cosineScoreSum = 0.0;
+            int pairCount = 0;
+            for(var i = 0; i < methodBodyCollection.Count; i++)
+            {
+                for(int j = 0; j < methodBodyCollection.Count; j++)
+                {
+                    if (i!=j)
+                    {
+                        cosineScoreSum += cosineInstance.Similarity(methodBodyCollection[i], methodBodyCollection[j]);
+                        pairCount++;
+                    }
+                }
+            }
+            var mean = cosineScoreSum / (double)pairCount;
+            Console.WriteLine(mean);
+            return (mean <= 0.4);
+        }
         private static VisualStudioInstance SelectVisualStudioInstance(VisualStudioInstance[] visualStudioInstances)
         {
             Console.WriteLine("Multiple installs of MSBuild detected please select one:");

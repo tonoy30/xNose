@@ -1,7 +1,7 @@
 [
   {
     "Name": "CalculatorTest",
-    "Message": null,
+    "Message": "This class has Lack of Cohesion of Test Cases",
     "Methods": [
       {
         "Name": "TestAdd",
@@ -163,7 +163,7 @@
   },
   {
     "Name": "UnitTest",
-    "Message": null,
+    "Message": "This class has Lack of Cohesion of Test Cases",
     "Methods": [
       {
         "Name": "EmptyTest",
