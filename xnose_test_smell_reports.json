@@ -58,6 +58,10 @@
           {
             "Name": "EagerTestSmell",
             "Status": "Not Found"
+          },
+          {
+            "Name": "BoolInAssertEqual",
+            "Status": "Not Found"
           }
         ]
       },
@@ -115,6 +119,10 @@
           },
           {
             "Name": "EagerTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "BoolInAssertEqual",
             "Status": "Not Found"
           }
         ]
@@ -180,6 +188,10 @@
           {
             "Name": "EagerTestSmell",
             "Status": "Not Found"
+          },
+          {
+            "Name": "BoolInAssertEqual",
+            "Status": "Not Found"
           }
         ]
       },
@@ -237,6 +249,10 @@
           },
           {
             "Name": "EagerTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "BoolInAssertEqual",
             "Status": "Not Found"
           }
         ]
@@ -296,6 +312,10 @@
           {
             "Name": "EagerTestSmell",
             "Status": "Not Found"
+          },
+          {
+            "Name": "BoolInAssertEqual",
+            "Status": "Found"
           }
         ]
       },
@@ -354,6 +374,10 @@
           {
             "Name": "EagerTestSmell",
             "Status": "Not Found"
+          },
+          {
+            "Name": "BoolInAssertEqual",
+            "Status": "Not Found"
           }
         ]
       },
@@ -411,6 +435,72 @@
           },
           {
             "Name": "EagerTestSmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "BoolInAssertEqual",
+            "Status": "Not Found"
+          }
+        ]
+      },
+      {
+        "Name": "BoolInAssertEqualTest",
+        "Body": "{\r\n    var isCycleExist = Converter.IsCycleExist(5);\r\n    Assert.Equal(true, isCycleExist);\r\n}",
+        "Smells": [
+          {
+            "Name": "EmptyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConditionalTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "CyclomaticComplexityTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ExpectedExceptionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "AssertionRouletteTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "UnknownTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantPrintTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SleepyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "IgnoreTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "DuplicateAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "MagicNumberTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EagerTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "BoolInAssertEqual",
             "Status": "Found"
           }
         ]

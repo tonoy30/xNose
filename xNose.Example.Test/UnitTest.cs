@@ -44,5 +44,11 @@ namespace xNose.Example.Test
             int result4 = Converter.ConvertToFahrenheit(20);
             Assert.Equal(result4, 68);
         }
+        [Fact]
+        public void BoolInAssertEqualTest()
+        {
+            var isCycleExist = Converter.IsCycleExist(5);
+            Assert.Equal(true, isCycleExist);
+        }
     }
 }

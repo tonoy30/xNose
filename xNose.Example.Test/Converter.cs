@@ -11,5 +11,9 @@ namespace xNose.Example.Test
         {
             return (v * 9 / 5) + 32;
         }
+        public static bool IsCycleExist(int nodeNumber)
+        {
+            return nodeNumber > 0;
+        }
     }
 }
