@@ -121,9 +121,9 @@ namespace xNose.Core
             var cosineInstance = new Cosine();
             double cosineScoreSum = 0.0;
             int pairCount = 0;
-            for(var i = 0; i < methodBodyCollection.Count; i++)
+            for (int i = 0; i < methodBodyCollection.Count; i++)
             {
-                for(int j = 0; j < methodBodyCollection.Count; j++)
+                for (int j = 0; j < methodBodyCollection.Count; j++)
                 {
                     if (i!=j)
                     {
@@ -137,7 +137,7 @@ namespace xNose.Core
 
             var testClassCohesionScore = cosineScoreSum / (double)pairCount;
             Console.WriteLine(testClassCohesionScore);
-            return (1.0 - testClassCohesionScore >= 0.6);//from paper
+            return ((1.0 - testClassCohesionScore) >= 0.6);//from paper
         }
         private static VisualStudioInstance SelectVisualStudioInstance(VisualStudioInstance[] visualStudioInstances)
         {
