@@ -2,6 +2,10 @@ namespace xNose.Example.Test
 {
     public class UnitTest
     {
+        public UnitTest()
+        {
+            Console.WriteLine("123");
+        }
         [Fact]
         public void EmptyTest()
         {
