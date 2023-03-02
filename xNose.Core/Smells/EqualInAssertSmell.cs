@@ -18,7 +18,7 @@ namespace xNose.Core.Smells
 
             foreach (var invocation in invocations)
             {
-                if (invocation.ArgumentList.Arguments.ToString().Contains("=="))
+                if (invocation.ArgumentList.Arguments.ToString().Contains('='))
                     return true;
             }
             return false;
