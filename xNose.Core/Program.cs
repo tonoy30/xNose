@@ -132,9 +132,12 @@ namespace xNose.Core
                     }
                 }
             }
-            var mean = cosineScoreSum / (double)pairCount;
-            Console.WriteLine(mean);
-            return (mean <= 0.4);
+            if (pairCount <= 0)
+                return false;
+
+            var testClassCohesionScore = cosineScoreSum / (double)pairCount;
+            Console.WriteLine(testClassCohesionScore);
+            return (1.0 - testClassCohesionScore >= 0.6);//from paper
         }
         private static VisualStudioInstance SelectVisualStudioInstance(VisualStudioInstance[] visualStudioInstances)
         {
