@@ -44,19 +44,22 @@ namespace xNose.Core
                 Console.WriteLine($"Finished loading solution '{solutionPath}'");
 
                 // TODO: Do analysis on the projects in the loaded solution
-                var project = solution.Projects.FirstOrDefault(p => (p.Name.Contains("Test", StringComparison.InvariantCultureIgnoreCase)));
+                var projects = solution.Projects.Select(p =>p).Where(p=>p.Name.Contains("Test", StringComparison.InvariantCultureIgnoreCase));
+                var reporter = new JsonFileReporter(solutionPath);
 
-                var compilation = await project.GetCompilationAsync();
-
-                var classVisitor = new ClassVirtualizationVisitor();
-
-                foreach (var syntaxTree in compilation.SyntaxTrees)
+                foreach(var project in projects)
                 {
-                    classVisitor.Visit(syntaxTree.GetRoot());
-                }
+                    var compilation = await project.GetCompilationAsync();
+
+                    var classVisitor = new ClassVirtualizationVisitor();
+
+                    foreach (var syntaxTree in compilation.SyntaxTrees)
+                    {
+                        classVisitor.Visit(syntaxTree.GetRoot());
+                    }
 
 
-                var testSmells = new List<ASmell> {
+                    var testSmells = new List<ASmell> {
                     new EmptyTestSmell(),
                     new ConditionalTestSmell(),
                     new CyclomaticComplexityTestSmell(),
@@ -77,41 +80,43 @@ namespace xNose.Core
                     new ObscureInLineSetUpSmell()
                 };
 
-                var reporter = new JsonFileReporter(solutionPath);
-                
-                foreach (var (classDeclaration, methodDeclarations) in classVisitor.ClassWithMethods)
-                {
-                    List<string> methodBodyCollection = new List<string>();
-                    var classReporter = new ClassReporter
-                    {
-                        Name = classDeclaration.Identifier.ValueText
-                    };
-                    foreach (var methodDeclaration in methodDeclarations)
-                    {
-                        var methodReporter = new MethodReporter
-                        {
-                            Name = methodDeclaration.Identifier.Text,
-                            Body = methodDeclaration.Body.NormalizeWhitespace().ToFullString()
-                        };
-                        methodBodyCollection.Add(methodReporter.Body);
-                        foreach (var smell in testSmells)
-                        {
-                            smell.Node = methodDeclaration;
-                            var message = new MethodReporterMessage
-                            {
-                                Name = smell.Name(),
-                                Status = smell.HasSmell() ? "Found" : "Not Found"
-                            };
-                            methodReporter.AddMessage(message);
-                        }
-                        classReporter.AddMethodReport(methodReporter);
-                    }
-                    if(HasLackOfCohesion(methodBodyCollection))
-                    {
-                        classReporter.Message = "This class has Lack of Cohesion of Test Cases";
-                    }
 
-                    reporter.AddClassReporter(classReporter);
+                    foreach (var (classDeclaration, methodDeclarations) in classVisitor.ClassWithMethods)
+                    {
+                        List<string> methodBodyCollection = new List<string>();
+                        var classReporter = new ClassReporter
+                        {
+                            Name = classDeclaration.Identifier.ValueText
+                        };
+                        Console.WriteLine($"Analysis started for class: {classReporter.Name}");
+                        foreach (var methodDeclaration in methodDeclarations)
+                        {
+                            var methodReporter = new MethodReporter
+                            {
+                                Name = methodDeclaration.Identifier.Text,
+                                Body = methodDeclaration.Body.NormalizeWhitespace().ToFullString()
+                            };
+                            methodBodyCollection.Add(methodReporter.Body);
+                            foreach (var smell in testSmells)
+                            {
+                                smell.Node = methodDeclaration;
+                                var message = new MethodReporterMessage
+                                {
+                                    Name = smell.Name(),
+                                    Status = smell.HasSmell() ? "Found" : "Not Found"
+                                };
+                                methodReporter.AddMessage(message);
+                            }
+                            classReporter.AddMethodReport(methodReporter);
+                        }
+                        if (HasLackOfCohesion(methodBodyCollection))
+                        {
+                            classReporter.Message = "This class has Lack of Cohesion of Test Cases";
+                        }
+
+                        reporter.AddClassReporter(classReporter);
+                        Console.WriteLine($"Analysis ended for class: {classReporter.Name}");
+                    }
                 }
                 await reporter.SaveReportAsync();
             }
