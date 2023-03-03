@@ -21,31 +21,31 @@ namespace xNose.Core.Smells
 
             var assertionCount = assertions.Count();
             //Console.WriteLine(string.Join(',', assertions.Select(i=>i.ToString()).ToArray()));
-            if (assertionCount > 1)
-            {
-                var pairwiseCosineSimilarity = ComputePairwiseCosineSimilarity(assertions);
-
-                if (pairwiseCosineSimilarity <= 0.4)
-                {
-                    return true;
-                }
-            }
-
-            //var assertCount = 0;
-            //var methodBodyWalker = new MethodBodyWalker();
-            //methodBodyWalker.Visit(root);
-            //if (methodBodyWalker.Expressions.Any())
+            //if (assertionCount > 1)
             //{
-            //    foreach (var expression in methodBodyWalker.Expressions)
+            //    var pairwiseCosineSimilarity = ComputePairwiseCosineSimilarity(assertions);
+
+            //    if (pairwiseCosineSimilarity <= 0.4)
             //    {
-            //        if (expression.StartsWith(pattern))
-            //        {
-            //            assertCount++;
-            //        }
+            //        return true;
             //    }
             //}
-            //return assertCount > 2;
-            return false;
+
+            var assertCount = 0;
+            var methodBodyWalker = new MethodBodyWalker();
+            methodBodyWalker.Visit(root);
+            if (methodBodyWalker.Expressions.Any())
+            {
+                foreach (var expression in methodBodyWalker.Expressions)
+                {
+                    if (expression.StartsWith(pattern))
+                    {
+                        assertCount++;
+                    }
+                }
+            }
+            return assertCount > 2;
+            //return false;
         }
 
         public override string Name()

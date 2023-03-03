@@ -88,7 +88,7 @@ namespace xNose.Core
                         {
                             Name = classDeclaration.Identifier.ValueText
                         };
-                        Console.WriteLine($"Analysis started for class: {classReporter.Name}");
+                        Console.WriteLine($"Analysis started for class: {classReporter.Name}, ProjectName: {project.Name.ToString()}");
                         foreach (var methodDeclaration in methodDeclarations)
                         {
                             var methodReporter = new MethodReporter
