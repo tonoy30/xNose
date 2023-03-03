@@ -46,7 +46,7 @@ namespace xNose.Core
                 // TODO: Do analysis on the projects in the loaded solution
                 var projects = solution.Projects.Select(p =>p).Where(p=>p.Name.Contains("Test", StringComparison.InvariantCultureIgnoreCase));
                 var reporter = new JsonFileReporter(solutionPath);
-
+                int testClassCount = 0, testMethodCount = 0;
                 foreach(var project in projects)
                 {
                     var compilation = await project.GetCompilationAsync();
@@ -60,26 +60,25 @@ namespace xNose.Core
 
 
                     var testSmells = new List<ASmell> {
-                    new EmptyTestSmell(),
-                    new ConditionalTestSmell(),
-                    new CyclomaticComplexityTestSmell(),
-                    new ExpectedExceptionTestSmell(),
-                    new AssertionRouletteTestSmell(),
-                    new UnknownTestSmell(),
-                    new RedundantPrintTestSmell(),
-                    new SleepyTestSmell(),
-                    new IgnoreTestSmell(),
-                    new RedundantAssertionTestSmell(),
-                    new DuplicateAssertionTestSmell(),
-                    new MagicNumberTestSmell(),
-                    new EagerTestSmell(),
-                    new BoolInAssertEqualSmell(),
-                    new EqualInAssertSmell(),
-                    new SensitiveEqualitySmell(),
-                    new ConstructorInitializationTestSmell(),
-                    new ObscureInLineSetUpSmell()
-                };
-
+                                        new EmptyTestSmell(),
+                                        new ConditionalTestSmell(),
+                                        new CyclomaticComplexityTestSmell(),
+                                        new ExpectedExceptionTestSmell(),
+                                        new AssertionRouletteTestSmell(),
+                                        new UnknownTestSmell(),
+                                        new RedundantPrintTestSmell(),
+                                        new SleepyTestSmell(),
+                                        new IgnoreTestSmell(),
+                                        new RedundantAssertionTestSmell(),
+                                        new DuplicateAssertionTestSmell(),
+                                        new MagicNumberTestSmell(),
+                                        new EagerTestSmell(),
+                                        new BoolInAssertEqualSmell(),
+                                        new EqualInAssertSmell(),
+                                        new SensitiveEqualitySmell(),
+                                        new ConstructorInitializationTestSmell(),
+                                        new ObscureInLineSetUpSmell()
+                                    };
 
                     foreach (var (classDeclaration, methodDeclarations) in classVisitor.ClassWithMethods)
                     {
@@ -88,6 +87,8 @@ namespace xNose.Core
                         {
                             Name = classDeclaration.Identifier.ValueText
                         };
+                        testClassCount++;
+                        testMethodCount += methodDeclarations.Count;
                         Console.WriteLine($"Analysis started for class: {classReporter.Name}, ProjectName: {project.Name.ToString()}");
                         foreach (var methodDeclaration in methodDeclarations)
                         {
@@ -118,6 +119,7 @@ namespace xNose.Core
                         Console.WriteLine($"Analysis ended for class: {classReporter.Name}");
                     }
                 }
+                Console.WriteLine($"Total Test projects: {projects.Count()}, testClassCount: {testClassCount}, testMethodCount: {testMethodCount}");
                 await reporter.SaveReportAsync();
             }
         }
