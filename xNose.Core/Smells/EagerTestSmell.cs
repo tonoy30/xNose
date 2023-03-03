@@ -23,7 +23,7 @@ namespace xNose.Core.Smells
             foreach (var invocation in invocations)
             {
                 var invocationName = invocation.Split(".");
-                if (invocationName.Length < 1) { continue; }
+                if (invocationName.Length <= 1) { continue; }
 
                 var className = invocationName[0];
                 var memberName = invocationName[1];

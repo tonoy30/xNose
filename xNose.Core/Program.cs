@@ -44,7 +44,7 @@ namespace xNose.Core
                 Console.WriteLine($"Finished loading solution '{solutionPath}'");
 
                 // TODO: Do analysis on the projects in the loaded solution
-                var project = solution.Projects.FirstOrDefault(p => string.Equals(p.Name, "xNose.Example.Test"));
+                var project = solution.Projects.FirstOrDefault(p => (p.Name.Contains("Test", StringComparison.InvariantCultureIgnoreCase)));
 
                 var compilation = await project.GetCompilationAsync();
 
