@@ -3,6 +3,7 @@ using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 using System.Reflection;
 using System.Text.RegularExpressions;
 
@@ -20,16 +21,21 @@ namespace xNose.Core.Visitors
            
             var startOrEndWithTest = Regex.IsMatch(node.Identifier.ValueText, pattern);
             
-            if(startOrEndWithTest)
+            //if(startOrEndWithTest)
             {
 				var root = node.SyntaxTree.GetRoot();
                 var methods = root.DescendantNodes()
                     .OfType<MethodDeclarationSyntax>()
-                    .Where(m => Regex.IsMatch(m.Identifier.ValueText, pattern)).ToList();
-                ClassWithMethods.TryAdd(node, methods);
-				return node;
+                    .Where(m => m.AttributeLists.SelectMany(a => a.Attributes).Select(b => b.Name.ToString()).Any(c=>c.Equals("Fact", StringComparison.InvariantCultureIgnoreCase)))
+                    .ToList();
+                if (methods!=null && methods.Count!=0)
+                {
+                    ClassWithMethods.TryAdd(node, methods);
+                    return node;
+                }
+                return null;
             }
-            return null;
+            //return null;
         }
     }
 }

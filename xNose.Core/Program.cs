@@ -36,7 +36,7 @@ namespace xNose.Core
                 // Print message for WorkspaceFailed event to help diagnosing project load failures.
                 workspace.WorkspaceFailed += (o, e) => Console.WriteLine(e.Diagnostic.Message);
 
-                var solutionPath = args[0];
+                var solutionPath = "/Users/pp_paul/Documents/workstation/Test_Smell/eShopOnWeb/eShopOnWeb.sln";
                 Console.WriteLine($"Loading solution '{solutionPath}'");
 
                 // Attach progress reporter so we print projects as they are loaded.
@@ -92,6 +92,18 @@ namespace xNose.Core
                         Console.WriteLine($"Analysis started for class: {classReporter.Name}, ProjectName: {project.Name.ToString()}");
                         foreach (var methodDeclaration in methodDeclarations)
                         {
+                            if (methodDeclaration.Body == null)
+                            {
+                                string errorLine = $"Could not load the body for function: {methodDeclaration.Identifier.Text} in class: {classReporter.Name}";
+                                Console.WriteLine(errorLine);
+                                var tempMethodReporter = new MethodReporter
+                                {
+                                    Name = methodDeclaration.Identifier.Text,
+                                    Body = errorLine
+                                };
+                                classReporter.AddMethodReport(tempMethodReporter);
+                                continue;
+                            }
                             var methodReporter = new MethodReporter
                             {
                                 Name = methodDeclaration.Identifier.Text,

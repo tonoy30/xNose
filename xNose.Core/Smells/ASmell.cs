@@ -14,7 +14,7 @@ namespace xNose.Core.Smells
 
         public virtual SyntaxNode GetRoot()
         {
-			return CSharpSyntaxTree.ParseText(Node.Body.ToFullString()).GetRoot();
+			return CSharpSyntaxTree.ParseText(Node.Body?.ToFullString()).GetRoot();
 		}
 	}
 }
