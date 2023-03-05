@@ -36,7 +36,20 @@ namespace xNose.Core
                 // Print message for WorkspaceFailed event to help diagnosing project load failures.
                 workspace.WorkspaceFailed += (o, e) => Console.WriteLine(e.Diagnostic.Message);
 
-                var solutionPath = "/Users/pp_paul/Documents/workstation/Test_Smell/eShopOnWeb/eShopOnWeb.sln";
+                var solutionPath =
+                    //"/Users/pp_paul/Documents/workstation/Test_Smell/graphql-platform/src/HotChocolate/Core/HotChocolate.Core.sln";
+                    //"/Users/pp_paul/Documents/workstation/Test_Smell/graphql-platform/src/HotChocolate/CodeGeneration/HotChocolate.CodeGeneration.sln";
+                    //"/Users/pp_paul/Documents/workstation/Test_Smell/graphql-platform/src/HotChocolate/Caching/HotChocolate.Caching.sln";
+                    //"/Users/pp_paul/Documents/workstation/Test_Smell/graphql-platform/src/GreenDonut/GreenDonut.sln";
+                    //"/Users/pp_paul/Documents/workstation/Test_Smell/refit/Refit.sln";
+                    //"/Users/pp_paul/Documents/workstation/Test_Smell/Scrutor/Scrutor.sln";
+                    //"/Users/pp_paul/Documents/workstation/Test_Smell/IdentityServer4.Admin/Skoruba.IdentityServer4.Admin.sln";
+                    //"/Users/pp_paul/Documents/workstation/Test_Smell/c4sharp/C4Sharp.sln";
+                    //"/Users/pp_paul/Documents/workstation/Test_Smell/PowerShell/PowerShell.sln";
+                    //"/Users/pp_paul/Documents/workstation/Test_Smell/aspnetboilerplate/Abp.sln";
+                    //"/Users/pp_paul/Documents/workstation/Test_Smell/Ocelot/Ocelot.sln";
+                    //"/Users/pp_paul/Documents/workstation/Test_Smell/NLog/src/NLog.sln";
+                     "/Users/pp_paul/Documents/workstation/Test_Smell/eShopOnWeb/eShopOnWeb.sln";
                 Console.WriteLine($"Loading solution '{solutionPath}'");
 
                 // Attach progress reporter so we print projects as they are loaded.
@@ -45,10 +58,18 @@ namespace xNose.Core
 
                 // TODO: Do analysis on the projects in the loaded solution
                 var projects = solution.Projects.Select(p =>p).Where(p=>p.Name.Contains("Test", StringComparison.InvariantCultureIgnoreCase));
+                List<string> counter = new List<string>();
                 var reporter = new JsonFileReporter(solutionPath);
                 int testClassCount = 0, testMethodCount = 0;
                 foreach(var project in projects)
                 {
+                    if(counter.Contains(project.FilePath.ToString()))
+                    {
+                        continue;
+                    }
+                    Console.WriteLine(project.AssemblyName.ToString());
+                    Console.WriteLine(project.DefaultNamespace.ToString());
+                    counter.Add(project.FilePath.ToString());
                     var compilation = await project.GetCompilationAsync();
 
                     var classVisitor = new ClassVirtualizationVisitor();
@@ -131,7 +152,7 @@ namespace xNose.Core
                         Console.WriteLine($"Analysis ended for class: {classReporter.Name}");
                     }
                 }
-                Console.WriteLine($"Total Test projects: {projects.Count()}, testClassCount: {testClassCount}, testMethodCount: {testMethodCount}");
+                Console.WriteLine($"Total Test projects: {counter.Count()}, testClassCount: {testClassCount}, testMethodCount: {testMethodCount}");
                 await reporter.SaveReportAsync();
             }
         }

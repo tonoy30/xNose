@@ -1,0 +1,4064 @@
+[
+  {
+    "Name": "BasketAddItem",
+    "Message": null,
+    "Methods": [
+      {
+        "Name": "AddsBasketItemIfNotPresent",
+        "Body": "{\r\n    var basket = new Basket(_buyerId);\r\n    basket.AddItem(_testCatalogItemId, _testUnitPrice, _testQuantity);\r\n    var firstItem = basket.Items.Single();\r\n    Assert.Equal(_testCatalogItemId, firstItem.CatalogItemId);\r\n    Assert.Equal(_testUnitPrice, firstItem.UnitPrice);\r\n    Assert.Equal(_testQuantity, firstItem.Quantity);\r\n}",
+        "Smells": [
+          {
+            "Name": "EmptyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConditionalTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "CyclomaticComplexityTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ExpectedExceptionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "AssertionRouletteTestSmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "UnknownTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantPrintTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SleepyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "IgnoreTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "DuplicateAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "MagicNumberTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EagerTestSmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "BoolInAssertEqualSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EqualInAssertSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SensitiveEqualitySmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConstructorInitializationTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ObscureInLineSetUpSmell",
+            "Status": "Not Found"
+          }
+        ]
+      },
+      {
+        "Name": "IncrementsQuantityOfItemIfPresent",
+        "Body": "{\r\n    var basket = new Basket(_buyerId);\r\n    basket.AddItem(_testCatalogItemId, _testUnitPrice, _testQuantity);\r\n    basket.AddItem(_testCatalogItemId, _testUnitPrice, _testQuantity);\r\n    var firstItem = basket.Items.Single();\r\n    Assert.Equal(_testQuantity * 2, firstItem.Quantity);\r\n}",
+        "Smells": [
+          {
+            "Name": "EmptyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConditionalTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "CyclomaticComplexityTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ExpectedExceptionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "AssertionRouletteTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "UnknownTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantPrintTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SleepyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "IgnoreTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "DuplicateAssertionTestSmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "MagicNumberTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EagerTestSmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "BoolInAssertEqualSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EqualInAssertSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SensitiveEqualitySmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConstructorInitializationTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ObscureInLineSetUpSmell",
+            "Status": "Not Found"
+          }
+        ]
+      },
+      {
+        "Name": "KeepsOriginalUnitPriceIfMoreItemsAdded",
+        "Body": "{\r\n    var basket = new Basket(_buyerId);\r\n    basket.AddItem(_testCatalogItemId, _testUnitPrice, _testQuantity);\r\n    basket.AddItem(_testCatalogItemId, _testUnitPrice * 2, _testQuantity);\r\n    var firstItem = basket.Items.Single();\r\n    Assert.Equal(_testUnitPrice, firstItem.UnitPrice);\r\n}",
+        "Smells": [
+          {
+            "Name": "EmptyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConditionalTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "CyclomaticComplexityTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ExpectedExceptionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "AssertionRouletteTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "UnknownTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantPrintTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SleepyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "IgnoreTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "DuplicateAssertionTestSmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "MagicNumberTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EagerTestSmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "BoolInAssertEqualSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EqualInAssertSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SensitiveEqualitySmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConstructorInitializationTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ObscureInLineSetUpSmell",
+            "Status": "Not Found"
+          }
+        ]
+      },
+      {
+        "Name": "DefaultsToQuantityOfOne",
+        "Body": "{\r\n    var basket = new Basket(_buyerId);\r\n    basket.AddItem(_testCatalogItemId, _testUnitPrice);\r\n    var firstItem = basket.Items.Single();\r\n    Assert.Equal(1, firstItem.Quantity);\r\n}",
+        "Smells": [
+          {
+            "Name": "EmptyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConditionalTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "CyclomaticComplexityTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ExpectedExceptionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "AssertionRouletteTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "UnknownTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantPrintTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SleepyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "IgnoreTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "DuplicateAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "MagicNumberTestSmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "EagerTestSmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "BoolInAssertEqualSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EqualInAssertSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SensitiveEqualitySmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConstructorInitializationTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ObscureInLineSetUpSmell",
+            "Status": "Not Found"
+          }
+        ]
+      },
+      {
+        "Name": "CantAddItemWithNegativeQuantity",
+        "Body": "{\r\n    var basket = new Basket(_buyerId);\r\n    Assert.Throws\u003CArgumentOutOfRangeException\u003E(() =\u003E basket.AddItem(_testCatalogItemId, _testUnitPrice, -1));\r\n}",
+        "Smells": [
+          {
+            "Name": "EmptyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConditionalTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "CyclomaticComplexityTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ExpectedExceptionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "AssertionRouletteTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "UnknownTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantPrintTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SleepyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "IgnoreTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "DuplicateAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "MagicNumberTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EagerTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "BoolInAssertEqualSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EqualInAssertSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SensitiveEqualitySmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConstructorInitializationTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ObscureInLineSetUpSmell",
+            "Status": "Not Found"
+          }
+        ]
+      },
+      {
+        "Name": "CantModifyQuantityToNegativeNumber",
+        "Body": "{\r\n    var basket = new Basket(_buyerId);\r\n    basket.AddItem(_testCatalogItemId, _testUnitPrice);\r\n    Assert.Throws\u003CArgumentOutOfRangeException\u003E(() =\u003E basket.AddItem(_testCatalogItemId, _testUnitPrice, -2));\r\n}",
+        "Smells": [
+          {
+            "Name": "EmptyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConditionalTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "CyclomaticComplexityTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ExpectedExceptionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "AssertionRouletteTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "UnknownTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantPrintTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SleepyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "IgnoreTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "DuplicateAssertionTestSmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "MagicNumberTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EagerTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "BoolInAssertEqualSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EqualInAssertSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SensitiveEqualitySmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConstructorInitializationTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ObscureInLineSetUpSmell",
+            "Status": "Not Found"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "BasketRemoveEmptyItems",
+    "Message": null,
+    "Methods": [
+      {
+        "Name": "RemovesEmptyBasketItems",
+        "Body": "{\r\n    var basket = new Basket(_buyerId);\r\n    basket.AddItem(_testCatalogItemId, _testUnitPrice, 0);\r\n    basket.RemoveEmptyItems();\r\n    Assert.Equal(0, basket.Items.Count);\r\n}",
+        "Smells": [
+          {
+            "Name": "EmptyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConditionalTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "CyclomaticComplexityTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ExpectedExceptionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "AssertionRouletteTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "UnknownTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantPrintTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SleepyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "IgnoreTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "DuplicateAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "MagicNumberTestSmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "EagerTestSmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "BoolInAssertEqualSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EqualInAssertSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SensitiveEqualitySmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConstructorInitializationTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ObscureInLineSetUpSmell",
+            "Status": "Not Found"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "BasketTotalItems",
+    "Message": null,
+    "Methods": [
+      {
+        "Name": "ReturnsTotalQuantityWithOneItem",
+        "Body": "{\r\n    var basket = new Basket(_buyerId);\r\n    basket.AddItem(_testCatalogItemId, _testUnitPrice, _testQuantity);\r\n    var result = basket.TotalItems;\r\n    Assert.Equal(_testQuantity, result);\r\n}",
+        "Smells": [
+          {
+            "Name": "EmptyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConditionalTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "CyclomaticComplexityTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ExpectedExceptionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "AssertionRouletteTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "UnknownTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantPrintTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SleepyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "IgnoreTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "DuplicateAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "MagicNumberTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EagerTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "BoolInAssertEqualSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EqualInAssertSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SensitiveEqualitySmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConstructorInitializationTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ObscureInLineSetUpSmell",
+            "Status": "Not Found"
+          }
+        ]
+      },
+      {
+        "Name": "ReturnsTotalQuantityWithMultipleItems",
+        "Body": "{\r\n    var basket = new Basket(_buyerId);\r\n    basket.AddItem(_testCatalogItemId, _testUnitPrice, _testQuantity);\r\n    basket.AddItem(_testCatalogItemId, _testUnitPrice, _testQuantity * 2);\r\n    var result = basket.TotalItems;\r\n    Assert.Equal(_testQuantity * 3, result);\r\n}",
+        "Smells": [
+          {
+            "Name": "EmptyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConditionalTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "CyclomaticComplexityTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ExpectedExceptionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "AssertionRouletteTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "UnknownTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantPrintTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SleepyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "IgnoreTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "DuplicateAssertionTestSmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "MagicNumberTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EagerTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "BoolInAssertEqualSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EqualInAssertSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SensitiveEqualitySmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConstructorInitializationTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ObscureInLineSetUpSmell",
+            "Status": "Not Found"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "OrderTotal",
+    "Message": null,
+    "Methods": [
+      {
+        "Name": "IsZeroForNewOrder",
+        "Body": "{\r\n    var order = new OrderBuilder().WithNoItems();\r\n    Assert.Equal(0, order.Total());\r\n}",
+        "Smells": [
+          {
+            "Name": "EmptyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConditionalTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "CyclomaticComplexityTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ExpectedExceptionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "AssertionRouletteTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "UnknownTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantPrintTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SleepyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "IgnoreTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "DuplicateAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "MagicNumberTestSmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "EagerTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "BoolInAssertEqualSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EqualInAssertSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SensitiveEqualitySmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConstructorInitializationTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ObscureInLineSetUpSmell",
+            "Status": "Not Found"
+          }
+        ]
+      },
+      {
+        "Name": "IsCorrectGiven1Item",
+        "Body": "{\r\n    var builder = new OrderBuilder();\r\n    var items = new List\u003COrderItem\u003E\r\n    {\r\n        new OrderItem(builder.TestCatalogItemOrdered, _testUnitPrice, 1)\r\n    };\r\n    var order = new OrderBuilder().WithItems(items);\r\n    Assert.Equal(_testUnitPrice, order.Total());\r\n}",
+        "Smells": [
+          {
+            "Name": "EmptyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConditionalTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "CyclomaticComplexityTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ExpectedExceptionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "AssertionRouletteTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "UnknownTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantPrintTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SleepyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "IgnoreTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "DuplicateAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "MagicNumberTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EagerTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "BoolInAssertEqualSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EqualInAssertSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SensitiveEqualitySmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConstructorInitializationTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ObscureInLineSetUpSmell",
+            "Status": "Not Found"
+          }
+        ]
+      },
+      {
+        "Name": "IsCorrectGiven3Items",
+        "Body": "{\r\n    var builder = new OrderBuilder();\r\n    var order = builder.WithDefaultValues();\r\n    Assert.Equal(builder.TestUnitPrice * builder.TestUnits, order.Total());\r\n}",
+        "Smells": [
+          {
+            "Name": "EmptyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConditionalTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "CyclomaticComplexityTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ExpectedExceptionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "AssertionRouletteTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "UnknownTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantPrintTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SleepyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "IgnoreTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "DuplicateAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "MagicNumberTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EagerTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "BoolInAssertEqualSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EqualInAssertSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SensitiveEqualitySmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConstructorInitializationTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ObscureInLineSetUpSmell",
+            "Status": "Not Found"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "JsonExtensions",
+    "Message": null,
+    "Methods": [
+      {
+        "Name": "CorrectlySerializesAndDeserializesObject",
+        "Body": "{\r\n    var testParent = new TestParent\r\n    {\r\n        Id = 7,\r\n        Name = \u0022Test name\u0022,\r\n        Children = new[]\r\n        {\r\n            new TestChild(),\r\n            new TestChild(),\r\n            new TestChild()\r\n        }\r\n    };\r\n    var json = testParent.ToJson();\r\n    var result = json.FromJson\u003CTestParent\u003E();\r\n    Assert.Equal(testParent, result);\r\n}",
+        "Smells": [
+          {
+            "Name": "EmptyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConditionalTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "CyclomaticComplexityTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ExpectedExceptionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "AssertionRouletteTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "UnknownTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantPrintTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SleepyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "IgnoreTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "DuplicateAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "MagicNumberTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EagerTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "BoolInAssertEqualSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EqualInAssertSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SensitiveEqualitySmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConstructorInitializationTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ObscureInLineSetUpSmell",
+            "Status": "Not Found"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "AddItemToBasket",
+    "Message": null,
+    "Methods": [
+      {
+        "Name": "InvokesBasketRepositoryGetBySpecAsyncOnce",
+        "Body": "{\r\n    var basket = new Basket(_buyerId);\r\n    basket.AddItem(1, It.IsAny\u003Cdecimal\u003E(), It.IsAny\u003Cint\u003E());\r\n    _mockBasketRepo.Setup(x =\u003E x.FirstOrDefaultAsync(It.IsAny\u003CBasketWithItemsSpecification\u003E(), default)).ReturnsAsync(basket);\r\n    var basketService = new BasketService(_mockBasketRepo.Object, _mockLogger.Object);\r\n    await basketService.AddItemToBasket(basket.BuyerId, 1, 1.50m);\r\n    _mockBasketRepo.Verify(x =\u003E x.FirstOrDefaultAsync(It.IsAny\u003CBasketWithItemsSpecification\u003E(), default), Times.Once);\r\n}",
+        "Smells": [
+          {
+            "Name": "EmptyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConditionalTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "CyclomaticComplexityTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ExpectedExceptionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "AssertionRouletteTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "UnknownTestSmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "RedundantPrintTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SleepyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "IgnoreTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "DuplicateAssertionTestSmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "MagicNumberTestSmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "EagerTestSmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "BoolInAssertEqualSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EqualInAssertSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SensitiveEqualitySmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConstructorInitializationTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ObscureInLineSetUpSmell",
+            "Status": "Not Found"
+          }
+        ]
+      },
+      {
+        "Name": "InvokesBasketRepositoryUpdateAsyncOnce",
+        "Body": "{\r\n    var basket = new Basket(_buyerId);\r\n    basket.AddItem(1, It.IsAny\u003Cdecimal\u003E(), It.IsAny\u003Cint\u003E());\r\n    _mockBasketRepo.Setup(x =\u003E x.FirstOrDefaultAsync(It.IsAny\u003CBasketWithItemsSpecification\u003E(), default)).ReturnsAsync(basket);\r\n    var basketService = new BasketService(_mockBasketRepo.Object, _mockLogger.Object);\r\n    await basketService.AddItemToBasket(basket.BuyerId, 1, 1.50m);\r\n    _mockBasketRepo.Verify(x =\u003E x.UpdateAsync(basket, default), Times.Once);\r\n}",
+        "Smells": [
+          {
+            "Name": "EmptyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConditionalTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "CyclomaticComplexityTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ExpectedExceptionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "AssertionRouletteTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "UnknownTestSmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "RedundantPrintTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SleepyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "IgnoreTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "DuplicateAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "MagicNumberTestSmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "EagerTestSmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "BoolInAssertEqualSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EqualInAssertSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SensitiveEqualitySmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConstructorInitializationTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ObscureInLineSetUpSmell",
+            "Status": "Not Found"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "DeleteBasket",
+    "Message": null,
+    "Methods": [
+      {
+        "Name": "ShouldInvokeBasketRepositoryDeleteAsyncOnce",
+        "Body": "{\r\n    var basket = new Basket(_buyerId);\r\n    basket.AddItem(1, It.IsAny\u003Cdecimal\u003E(), It.IsAny\u003Cint\u003E());\r\n    basket.AddItem(2, It.IsAny\u003Cdecimal\u003E(), It.IsAny\u003Cint\u003E());\r\n    _mockBasketRepo.Setup(x =\u003E x.GetByIdAsync(It.IsAny\u003Cint\u003E(), default)).ReturnsAsync(basket);\r\n    var basketService = new BasketService(_mockBasketRepo.Object, _mockLogger.Object);\r\n    await basketService.DeleteBasketAsync(It.IsAny\u003Cint\u003E());\r\n    _mockBasketRepo.Verify(x =\u003E x.DeleteAsync(It.IsAny\u003CBasket\u003E(), default), Times.Once);\r\n}",
+        "Smells": [
+          {
+            "Name": "EmptyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConditionalTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "CyclomaticComplexityTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ExpectedExceptionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "AssertionRouletteTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "UnknownTestSmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "RedundantPrintTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SleepyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "IgnoreTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "DuplicateAssertionTestSmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "MagicNumberTestSmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "EagerTestSmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "BoolInAssertEqualSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EqualInAssertSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SensitiveEqualitySmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConstructorInitializationTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ObscureInLineSetUpSmell",
+            "Status": "Not Found"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "TransferBasket",
+    "Message": null,
+    "Methods": [
+      {
+        "Name": "InvokesBasketRepositoryFirstOrDefaultAsyncOnceIfAnonymousBasketNotExists",
+        "Body": "{\r\n    var anonymousBasket = null as Basket;\r\n    var userBasket = new Basket(_existentUserBasketBuyerId);\r\n    _mockBasketRepo.SetupSequence(x =\u003E x.FirstOrDefaultAsync(It.IsAny\u003CBasketWithItemsSpecification\u003E(), default)).ReturnsAsync(anonymousBasket).ReturnsAsync(userBasket);\r\n    var basketService = new BasketService(_mockBasketRepo.Object, _mockLogger.Object);\r\n    await basketService.TransferBasketAsync(_nonexistentAnonymousBasketBuyerId, _existentUserBasketBuyerId);\r\n    _mockBasketRepo.Verify(x =\u003E x.FirstOrDefaultAsync(It.IsAny\u003CBasketWithItemsSpecification\u003E(), default), Times.Once);\r\n}",
+        "Smells": [
+          {
+            "Name": "EmptyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConditionalTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "CyclomaticComplexityTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ExpectedExceptionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "AssertionRouletteTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "UnknownTestSmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "RedundantPrintTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SleepyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "IgnoreTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "DuplicateAssertionTestSmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "MagicNumberTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EagerTestSmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "BoolInAssertEqualSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EqualInAssertSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SensitiveEqualitySmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConstructorInitializationTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ObscureInLineSetUpSmell",
+            "Status": "Not Found"
+          }
+        ]
+      },
+      {
+        "Name": "TransferAnonymousBasketItemsWhilePreservingExistingUserBasketItems",
+        "Body": "{\r\n    var anonymousBasket = new Basket(_existentAnonymousBasketBuyerId);\r\n    anonymousBasket.AddItem(1, 10, 1);\r\n    anonymousBasket.AddItem(3, 55, 7);\r\n    var userBasket = new Basket(_existentUserBasketBuyerId);\r\n    userBasket.AddItem(1, 10, 4);\r\n    userBasket.AddItem(2, 99, 3);\r\n    _mockBasketRepo.SetupSequence(x =\u003E x.FirstOrDefaultAsync(It.IsAny\u003CBasketWithItemsSpecification\u003E(), default)).ReturnsAsync(anonymousBasket).ReturnsAsync(userBasket);\r\n    var basketService = new BasketService(_mockBasketRepo.Object, _mockLogger.Object);\r\n    await basketService.TransferBasketAsync(_nonexistentAnonymousBasketBuyerId, _existentUserBasketBuyerId);\r\n    _mockBasketRepo.Verify(x =\u003E x.UpdateAsync(userBasket, default), Times.Once);\r\n    Assert.Equal(3, userBasket.Items.Count);\r\n    Assert.Contains(userBasket.Items, x =\u003E x.CatalogItemId == 1 \u0026\u0026 x.UnitPrice == 10 \u0026\u0026 x.Quantity == 5);\r\n    Assert.Contains(userBasket.Items, x =\u003E x.CatalogItemId == 2 \u0026\u0026 x.UnitPrice == 99 \u0026\u0026 x.Quantity == 3);\r\n    Assert.Contains(userBasket.Items, x =\u003E x.CatalogItemId == 3 \u0026\u0026 x.UnitPrice == 55 \u0026\u0026 x.Quantity == 7);\r\n}",
+        "Smells": [
+          {
+            "Name": "EmptyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConditionalTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "CyclomaticComplexityTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ExpectedExceptionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "AssertionRouletteTestSmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "UnknownTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantPrintTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SleepyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "IgnoreTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "DuplicateAssertionTestSmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "MagicNumberTestSmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "EagerTestSmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "BoolInAssertEqualSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EqualInAssertSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SensitiveEqualitySmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConstructorInitializationTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ObscureInLineSetUpSmell",
+            "Status": "Not Found"
+          }
+        ]
+      },
+      {
+        "Name": "RemovesAnonymousBasketAfterUpdatingUserBasket",
+        "Body": "{\r\n    var anonymousBasket = new Basket(_existentAnonymousBasketBuyerId);\r\n    var userBasket = new Basket(_existentUserBasketBuyerId);\r\n    _mockBasketRepo.SetupSequence(x =\u003E x.FirstOrDefaultAsync(It.IsAny\u003CBasketWithItemsSpecification\u003E(), default)).ReturnsAsync(anonymousBasket).ReturnsAsync(userBasket);\r\n    var basketService = new BasketService(_mockBasketRepo.Object, _mockLogger.Object);\r\n    await basketService.TransferBasketAsync(_nonexistentAnonymousBasketBuyerId, _existentUserBasketBuyerId);\r\n    _mockBasketRepo.Verify(x =\u003E x.UpdateAsync(userBasket, default), Times.Once);\r\n    _mockBasketRepo.Verify(x =\u003E x.DeleteAsync(anonymousBasket, default), Times.Once);\r\n}",
+        "Smells": [
+          {
+            "Name": "EmptyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConditionalTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "CyclomaticComplexityTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ExpectedExceptionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "AssertionRouletteTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "UnknownTestSmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "RedundantPrintTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SleepyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "IgnoreTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "DuplicateAssertionTestSmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "MagicNumberTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EagerTestSmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "BoolInAssertEqualSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EqualInAssertSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SensitiveEqualitySmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConstructorInitializationTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ObscureInLineSetUpSmell",
+            "Status": "Not Found"
+          }
+        ]
+      },
+      {
+        "Name": "CreatesNewUserBasketIfNotExists",
+        "Body": "{\r\n    var anonymousBasket = new Basket(_existentAnonymousBasketBuyerId);\r\n    var userBasket = null as Basket;\r\n    _mockBasketRepo.SetupSequence(x =\u003E x.FirstOrDefaultAsync(It.IsAny\u003CBasketWithItemsSpecification\u003E(), default)).ReturnsAsync(anonymousBasket).ReturnsAsync(userBasket);\r\n    var basketService = new BasketService(_mockBasketRepo.Object, _mockLogger.Object);\r\n    await basketService.TransferBasketAsync(_existentAnonymousBasketBuyerId, _nonexistentUserBasketBuyerId);\r\n    _mockBasketRepo.Verify(x =\u003E x.AddAsync(It.Is\u003CBasket\u003E(x =\u003E x.BuyerId == _nonexistentUserBasketBuyerId), default), Times.Once);\r\n}",
+        "Smells": [
+          {
+            "Name": "EmptyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConditionalTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "CyclomaticComplexityTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ExpectedExceptionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "AssertionRouletteTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "UnknownTestSmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "RedundantPrintTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SleepyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "IgnoreTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "DuplicateAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "MagicNumberTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EagerTestSmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "BoolInAssertEqualSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EqualInAssertSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SensitiveEqualitySmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConstructorInitializationTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ObscureInLineSetUpSmell",
+            "Status": "Not Found"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "BasketWithItems",
+    "Message": null,
+    "Methods": [
+      {
+        "Name": "MatchesBasketWithGivenBasketId",
+        "Body": "{\r\n    var spec = new BasketWithItemsSpecification(_testBasketId);\r\n    var result = spec.Evaluate(GetTestBasketCollection()).FirstOrDefault();\r\n    Assert.NotNull(result);\r\n    Assert.Equal(_testBasketId, result.Id);\r\n}",
+        "Smells": [
+          {
+            "Name": "EmptyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConditionalTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "CyclomaticComplexityTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ExpectedExceptionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "AssertionRouletteTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "UnknownTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantPrintTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SleepyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "IgnoreTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "DuplicateAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "MagicNumberTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EagerTestSmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "BoolInAssertEqualSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EqualInAssertSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SensitiveEqualitySmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConstructorInitializationTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ObscureInLineSetUpSmell",
+            "Status": "Not Found"
+          }
+        ]
+      },
+      {
+        "Name": "MatchesNoBasketsIfBasketIdNotPresent",
+        "Body": "{\r\n    int badBasketId = -1;\r\n    var spec = new BasketWithItemsSpecification(badBasketId);\r\n    var result = spec.Evaluate(GetTestBasketCollection()).Any();\r\n    Assert.False(result);\r\n}",
+        "Smells": [
+          {
+            "Name": "EmptyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConditionalTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "CyclomaticComplexityTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ExpectedExceptionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "AssertionRouletteTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "UnknownTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantPrintTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SleepyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "IgnoreTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "DuplicateAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "MagicNumberTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EagerTestSmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "BoolInAssertEqualSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EqualInAssertSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SensitiveEqualitySmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConstructorInitializationTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ObscureInLineSetUpSmell",
+            "Status": "Not Found"
+          }
+        ]
+      },
+      {
+        "Name": "MatchesBasketWithGivenBuyerId",
+        "Body": "{\r\n    var spec = new BasketWithItemsSpecification(_buyerId);\r\n    var result = spec.Evaluate(GetTestBasketCollection()).FirstOrDefault();\r\n    Assert.NotNull(result);\r\n    Assert.Equal(_buyerId, result.BuyerId);\r\n}",
+        "Smells": [
+          {
+            "Name": "EmptyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConditionalTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "CyclomaticComplexityTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ExpectedExceptionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "AssertionRouletteTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "UnknownTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantPrintTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SleepyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "IgnoreTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "DuplicateAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "MagicNumberTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EagerTestSmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "BoolInAssertEqualSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EqualInAssertSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SensitiveEqualitySmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConstructorInitializationTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ObscureInLineSetUpSmell",
+            "Status": "Not Found"
+          }
+        ]
+      },
+      {
+        "Name": "MatchesNoBasketsIfBuyerIdNotPresent",
+        "Body": "{\r\n    string badBuyerId = \u0022badBuyerId\u0022;\r\n    var spec = new BasketWithItemsSpecification(badBuyerId);\r\n    var result = spec.Evaluate(GetTestBasketCollection()).Any();\r\n    Assert.False(result);\r\n}",
+        "Smells": [
+          {
+            "Name": "EmptyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConditionalTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "CyclomaticComplexityTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ExpectedExceptionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "AssertionRouletteTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "UnknownTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantPrintTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SleepyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "IgnoreTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "DuplicateAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "MagicNumberTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EagerTestSmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "BoolInAssertEqualSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EqualInAssertSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SensitiveEqualitySmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConstructorInitializationTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ObscureInLineSetUpSmell",
+            "Status": "Not Found"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "CatalogFilterPaginatedSpecification",
+    "Message": null,
+    "Methods": [
+      {
+        "Name": "ReturnsAllCatalogItems",
+        "Body": "{\r\n    var spec = new eShopWeb.ApplicationCore.Specifications.CatalogFilterPaginatedSpecification(0, 10, null, null);\r\n    var result = spec.Evaluate(GetTestCollection());\r\n    Assert.NotNull(result);\r\n    Assert.Equal(4, result.ToList().Count);\r\n}",
+        "Smells": [
+          {
+            "Name": "EmptyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConditionalTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "CyclomaticComplexityTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ExpectedExceptionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "AssertionRouletteTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "UnknownTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantPrintTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SleepyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "IgnoreTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "DuplicateAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "MagicNumberTestSmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "EagerTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "BoolInAssertEqualSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EqualInAssertSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SensitiveEqualitySmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConstructorInitializationTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ObscureInLineSetUpSmell",
+            "Status": "Not Found"
+          }
+        ]
+      },
+      {
+        "Name": "Returns2CatalogItemsWithSameBrandAndTypeId",
+        "Body": "{\r\n    var spec = new eShopWeb.ApplicationCore.Specifications.CatalogFilterPaginatedSpecification(0, 10, 1, 1);\r\n    var result = spec.Evaluate(GetTestCollection()).ToList();\r\n    Assert.NotNull(result);\r\n    Assert.Equal(2, result.ToList().Count);\r\n}",
+        "Smells": [
+          {
+            "Name": "EmptyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConditionalTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "CyclomaticComplexityTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ExpectedExceptionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "AssertionRouletteTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "UnknownTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantPrintTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SleepyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "IgnoreTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "DuplicateAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "MagicNumberTestSmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "EagerTestSmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "BoolInAssertEqualSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EqualInAssertSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SensitiveEqualitySmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConstructorInitializationTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ObscureInLineSetUpSmell",
+            "Status": "Not Found"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "CatalogItemsSpecification",
+    "Message": null,
+    "Methods": [
+      {
+        "Name": "MatchesSpecificCatalogItem",
+        "Body": "{\r\n    var catalogItemIds = new int[]\r\n    {\r\n        1\r\n    };\r\n    var spec = new eShopWeb.ApplicationCore.Specifications.CatalogItemsSpecification(catalogItemIds);\r\n    var result = spec.Evaluate(GetTestCollection()).ToList();\r\n    Assert.NotNull(result);\r\n    Assert.Single(result.ToList());\r\n}",
+        "Smells": [
+          {
+            "Name": "EmptyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConditionalTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "CyclomaticComplexityTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ExpectedExceptionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "AssertionRouletteTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "UnknownTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantPrintTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SleepyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "IgnoreTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "DuplicateAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "MagicNumberTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EagerTestSmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "BoolInAssertEqualSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EqualInAssertSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SensitiveEqualitySmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConstructorInitializationTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ObscureInLineSetUpSmell",
+            "Status": "Not Found"
+          }
+        ]
+      },
+      {
+        "Name": "MatchesAllCatalogItems",
+        "Body": "{\r\n    var catalogItemIds = new int[]\r\n    {\r\n        1,\r\n        3\r\n    };\r\n    var spec = new eShopWeb.ApplicationCore.Specifications.CatalogItemsSpecification(catalogItemIds);\r\n    var result = spec.Evaluate(GetTestCollection()).ToList();\r\n    Assert.NotNull(result);\r\n    Assert.Equal(2, result.ToList().Count);\r\n}",
+        "Smells": [
+          {
+            "Name": "EmptyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConditionalTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "CyclomaticComplexityTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ExpectedExceptionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "AssertionRouletteTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "UnknownTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantPrintTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SleepyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "IgnoreTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "DuplicateAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "MagicNumberTestSmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "EagerTestSmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "BoolInAssertEqualSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EqualInAssertSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SensitiveEqualitySmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConstructorInitializationTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ObscureInLineSetUpSmell",
+            "Status": "Not Found"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "CustomerOrdersWithItemsSpecification",
+    "Message": null,
+    "Methods": [
+      {
+        "Name": "ReturnsOrderWithOrderedItem",
+        "Body": "{\r\n    var spec = new eShopWeb.ApplicationCore.Specifications.CustomerOrdersWithItemsSpecification(_buyerId);\r\n    var result = spec.Evaluate(GetTestCollection()).FirstOrDefault();\r\n    Assert.NotNull(result);\r\n    Assert.NotNull(result.OrderItems);\r\n    Assert.Equal(1, result.OrderItems.Count);\r\n    Assert.NotNull(result.OrderItems.FirstOrDefault()?.ItemOrdered);\r\n}",
+        "Smells": [
+          {
+            "Name": "EmptyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConditionalTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "CyclomaticComplexityTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ExpectedExceptionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "AssertionRouletteTestSmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "UnknownTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantPrintTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SleepyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "IgnoreTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "DuplicateAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "MagicNumberTestSmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "EagerTestSmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "BoolInAssertEqualSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EqualInAssertSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SensitiveEqualitySmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConstructorInitializationTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ObscureInLineSetUpSmell",
+            "Status": "Not Found"
+          }
+        ]
+      },
+      {
+        "Name": "ReturnsAllOrderWithAllOrderedItem",
+        "Body": "{\r\n    var spec = new eShopWeb.ApplicationCore.Specifications.CustomerOrdersWithItemsSpecification(_buyerId);\r\n    var result = spec.Evaluate(GetTestCollection()).ToList();\r\n    Assert.NotNull(result);\r\n    Assert.Equal(2, result.Count);\r\n    Assert.Equal(1, result[0].OrderItems.Count);\r\n    Assert.NotNull(result[0].OrderItems.FirstOrDefault()?.ItemOrdered);\r\n    Assert.Equal(2, result[1].OrderItems.Count);\r\n    Assert.NotNull(result[1].OrderItems.ToList()[0].ItemOrdered);\r\n    Assert.NotNull(result[1].OrderItems.ToList()[1].ItemOrdered);\r\n}",
+        "Smells": [
+          {
+            "Name": "EmptyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConditionalTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "CyclomaticComplexityTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ExpectedExceptionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "AssertionRouletteTestSmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "UnknownTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantPrintTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SleepyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "IgnoreTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "DuplicateAssertionTestSmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "MagicNumberTestSmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "EagerTestSmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "BoolInAssertEqualSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EqualInAssertSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SensitiveEqualitySmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConstructorInitializationTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ObscureInLineSetUpSmell",
+            "Status": "Not Found"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "GetMyOrders",
+    "Message": null,
+    "Methods": [
+      {
+        "Name": "NotReturnNullIfOrdersArePresIent",
+        "Body": "{\r\n    var request = new eShopWeb.Web.Features.MyOrders.GetMyOrders(\u0022SomeUserName\u0022);\r\n    var handler = new GetMyOrdersHandler(_mockOrderRepository.Object);\r\n    var result = await handler.Handle(request, CancellationToken.None);\r\n    Assert.NotNull(result);\r\n}",
+        "Smells": [
+          {
+            "Name": "EmptyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConditionalTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "CyclomaticComplexityTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ExpectedExceptionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "AssertionRouletteTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "UnknownTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantPrintTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SleepyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "IgnoreTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "DuplicateAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "MagicNumberTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EagerTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "BoolInAssertEqualSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EqualInAssertSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SensitiveEqualitySmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConstructorInitializationTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ObscureInLineSetUpSmell",
+            "Status": "Not Found"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "GetOrderDetails",
+    "Message": null,
+    "Methods": [
+      {
+        "Name": "NotBeNullIfOrderExists",
+        "Body": "{\r\n    var request = new eShopWeb.Web.Features.OrderDetails.GetOrderDetails(\u0022SomeUserName\u0022, 0);\r\n    var handler = new GetOrderDetailsHandler(_mockOrderRepository.Object);\r\n    var result = await handler.Handle(request, CancellationToken.None);\r\n    Assert.NotNull(result);\r\n}",
+        "Smells": [
+          {
+            "Name": "EmptyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConditionalTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "CyclomaticComplexityTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ExpectedExceptionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "AssertionRouletteTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "UnknownTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantPrintTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SleepyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "IgnoreTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "DuplicateAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "MagicNumberTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EagerTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "BoolInAssertEqualSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EqualInAssertSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SensitiveEqualitySmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConstructorInitializationTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ObscureInLineSetUpSmell",
+            "Status": "Not Found"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "GenerateBrandsCacheKey",
+    "Message": null,
+    "Methods": [
+      {
+        "Name": "ReturnsBrandsCacheKey",
+        "Body": "{\r\n    var result = CacheHelpers.GenerateBrandsCacheKey();\r\n    Assert.Equal(\u0022brands\u0022, result);\r\n}",
+        "Smells": [
+          {
+            "Name": "EmptyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConditionalTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "CyclomaticComplexityTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ExpectedExceptionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "AssertionRouletteTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "UnknownTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantPrintTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SleepyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "IgnoreTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "DuplicateAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "MagicNumberTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EagerTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "BoolInAssertEqualSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EqualInAssertSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SensitiveEqualitySmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConstructorInitializationTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ObscureInLineSetUpSmell",
+            "Status": "Not Found"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "GenerateCatalogItemCacheKey",
+    "Message": null,
+    "Methods": [
+      {
+        "Name": "ReturnsCatalogItemCacheKey",
+        "Body": "{\r\n    var pageIndex = 0;\r\n    int? brandId = null;\r\n    int? typeId = null;\r\n    var result = CacheHelpers.GenerateCatalogItemCacheKey(pageIndex, Constants.ITEMS_PER_PAGE, brandId, typeId);\r\n    Assert.Equal(\u0022items-0-10--\u0022, result);\r\n}",
+        "Smells": [
+          {
+            "Name": "EmptyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConditionalTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "CyclomaticComplexityTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ExpectedExceptionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "AssertionRouletteTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "UnknownTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantPrintTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SleepyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "IgnoreTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "DuplicateAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "MagicNumberTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EagerTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "BoolInAssertEqualSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EqualInAssertSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SensitiveEqualitySmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConstructorInitializationTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ObscureInLineSetUpSmell",
+            "Status": "Not Found"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "GenerateTypesCacheKey",
+    "Message": null,
+    "Methods": [
+      {
+        "Name": "ReturnsTypesCacheKey",
+        "Body": "{\r\n    var result = CacheHelpers.GenerateTypesCacheKey();\r\n    Assert.Equal(\u0022types\u0022, result);\r\n}",
+        "Smells": [
+          {
+            "Name": "EmptyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConditionalTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "CyclomaticComplexityTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ExpectedExceptionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "AssertionRouletteTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "UnknownTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantPrintTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SleepyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "IgnoreTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "DuplicateAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "MagicNumberTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EagerTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "BoolInAssertEqualSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EqualInAssertSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SensitiveEqualitySmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConstructorInitializationTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ObscureInLineSetUpSmell",
+            "Status": "Not Found"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "SetQuantities",
+    "Message": null,
+    "Methods": [
+      {
+        "Name": "RemoveEmptyQuantities",
+        "Body": "{\r\n    var basket = BasketBuilder.WithOneBasketItem();\r\n    var basketService = new BasketService(_basketRepository, null);\r\n    await _basketRepository.AddAsync(basket);\r\n    _catalogContext.SaveChanges();\r\n    await basketService.SetQuantities(BasketBuilder.BasketId, new Dictionary\u003Cstring, int\u003E() { { BasketBuilder.BasketId.ToString(), 0 } });\r\n    Assert.Equal(0, basket.Items.Count);\r\n}",
+        "Smells": [
+          {
+            "Name": "EmptyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConditionalTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "CyclomaticComplexityTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ExpectedExceptionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "AssertionRouletteTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "UnknownTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantPrintTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SleepyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "IgnoreTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "DuplicateAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "MagicNumberTestSmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "EagerTestSmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "BoolInAssertEqualSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EqualInAssertSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SensitiveEqualitySmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConstructorInitializationTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ObscureInLineSetUpSmell",
+            "Status": "Not Found"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "GetById",
+    "Message": null,
+    "Methods": [
+      {
+        "Name": "GetsExistingOrder",
+        "Body": "{\r\n    var existingOrder = OrderBuilder.WithDefaultValues();\r\n    _catalogContext.Orders.Add(existingOrder);\r\n    _catalogContext.SaveChanges();\r\n    int orderId = existingOrder.Id;\r\n    _output.WriteLine($\u0022OrderId: {orderId}\u0022);\r\n    var orderFromRepo = await _orderRepository.GetByIdAsync(orderId);\r\n    Assert.Equal(OrderBuilder.TestBuyerId, orderFromRepo.BuyerId);\r\n    // Note: Using InMemoryDatabase OrderItems is available. Will be null if using SQL DB.\r\n    // Use the OrderWithItemsByIdSpec instead of just GetById to get the full aggregate\r\n    var firstItem = orderFromRepo.OrderItems.FirstOrDefault();\r\n    Assert.Equal(OrderBuilder.TestUnits, firstItem.Units);\r\n}",
+        "Smells": [
+          {
+            "Name": "EmptyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConditionalTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "CyclomaticComplexityTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ExpectedExceptionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "AssertionRouletteTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "UnknownTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantPrintTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SleepyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "IgnoreTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "DuplicateAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "MagicNumberTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EagerTestSmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "BoolInAssertEqualSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EqualInAssertSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SensitiveEqualitySmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConstructorInitializationTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ObscureInLineSetUpSmell",
+            "Status": "Not Found"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "GetByIdWithItemsAsync",
+    "Message": null,
+    "Methods": [
+      {
+        "Name": "GetOrderAndItemsByOrderIdWhenMultipleOrdersPresent",
+        "Body": "{\r\n    //Arrange\r\n    var itemOneUnitPrice = 5.50m;\r\n    var itemOneUnits = 2;\r\n    var itemTwoUnitPrice = 7.50m;\r\n    var itemTwoUnits = 5;\r\n    var firstOrder = OrderBuilder.WithDefaultValues();\r\n    _catalogContext.Orders.Add(firstOrder);\r\n    int firstOrderId = firstOrder.Id;\r\n    var secondOrderItems = new List\u003COrderItem\u003E();\r\n    secondOrderItems.Add(new OrderItem(OrderBuilder.TestCatalogItemOrdered, itemOneUnitPrice, itemOneUnits));\r\n    secondOrderItems.Add(new OrderItem(OrderBuilder.TestCatalogItemOrdered, itemTwoUnitPrice, itemTwoUnits));\r\n    var secondOrder = OrderBuilder.WithItems(secondOrderItems);\r\n    _catalogContext.Orders.Add(secondOrder);\r\n    int secondOrderId = secondOrder.Id;\r\n    _catalogContext.SaveChanges();\r\n    //Act\r\n    var spec = new OrderWithItemsByIdSpec(secondOrderId);\r\n    var orderFromRepo = await _orderRepository.FirstOrDefaultAsync(spec);\r\n    //Assert\r\n    Assert.Equal(secondOrderId, orderFromRepo.Id);\r\n    Assert.Equal(secondOrder.OrderItems.Count, orderFromRepo.OrderItems.Count);\r\n    Assert.Equal(1, orderFromRepo.OrderItems.Count(x =\u003E x.UnitPrice == itemOneUnitPrice));\r\n    Assert.Equal(1, orderFromRepo.OrderItems.Count(x =\u003E x.UnitPrice == itemTwoUnitPrice));\r\n    Assert.Equal(itemOneUnits, orderFromRepo.OrderItems.SingleOrDefault(x =\u003E x.UnitPrice == itemOneUnitPrice).Units);\r\n    Assert.Equal(itemTwoUnits, orderFromRepo.OrderItems.SingleOrDefault(x =\u003E x.UnitPrice == itemTwoUnitPrice).Units);\r\n}",
+        "Smells": [
+          {
+            "Name": "EmptyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConditionalTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "CyclomaticComplexityTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ExpectedExceptionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "AssertionRouletteTestSmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "UnknownTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantPrintTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SleepyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "IgnoreTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "DuplicateAssertionTestSmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "MagicNumberTestSmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "EagerTestSmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "BoolInAssertEqualSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EqualInAssertSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SensitiveEqualitySmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConstructorInitializationTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ObscureInLineSetUpSmell",
+            "Status": "Found"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "AccountControllerSignIn",
+    "Message": null,
+    "Methods": [
+      {
+        "Name": "ReturnsSignInScreenOnGet",
+        "Body": "{\r\n    var response = await Client.GetAsync(\u0022/identity/account/login\u0022);\r\n    response.EnsureSuccessStatusCode();\r\n    var stringResponse = await response.Content.ReadAsStringAsync();\r\n    Assert.Contains(\u0022demouser@microsoft.com\u0022, stringResponse);\r\n}",
+        "Smells": [
+          {
+            "Name": "EmptyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConditionalTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "CyclomaticComplexityTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ExpectedExceptionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "AssertionRouletteTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "UnknownTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantPrintTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SleepyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "IgnoreTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "DuplicateAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "MagicNumberTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EagerTestSmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "BoolInAssertEqualSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EqualInAssertSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SensitiveEqualitySmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConstructorInitializationTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ObscureInLineSetUpSmell",
+            "Status": "Not Found"
+          }
+        ]
+      },
+      {
+        "Name": "RegexMatchesValidRequestVerificationToken",
+        "Body": "{\r\n    // TODO: Move to a unit test\r\n    // TODO: Move regex to a constant in test project\r\n    var input = @\u0022\u003Cinput name=\u0022\u0022__RequestVerificationToken\u0022\u0022 type=\u0022\u0022hidden\u0022\u0022 value=\u0022\u0022CfDJ8Obhlq65OzlDkoBvsSX0tgxFUkIZ_qDDSt49D_StnYwphIyXO4zxfjopCWsygfOkngsL6P0tPmS2HTB1oYW-p_JzE0_MCFb7tF9Ol_qoOg_IC_yTjBNChF0qRgoZPmKYOIJigg7e2rsBsmMZDTdbnGo\u0022\u0022 /\u003E\u003Cinput name=\u0022\u0022RememberMe\u0022\u0022 type=\u0022\u0022hidden\u0022\u0022 value=\u0022\u0022false\u0022\u0022 /\u003E\u003C/form\u003E\u0022;\r\n    string regexpression = @\u0022name=\u0022\u0022__RequestVerificationToken\u0022\u0022 type=\u0022\u0022hidden\u0022\u0022 value=\u0022\u0022([-A-Za-z0-9\u002B=/\\\\_]\u002B?)\u0022\u0022\u0022;\r\n    var regex = new Regex(regexpression);\r\n    var match = regex.Match(input);\r\n    var group = match.Groups.Values.LastOrDefault();\r\n    Assert.NotNull(group);\r\n    Assert.True(group.Value.Length \u003E 50);\r\n}",
+        "Smells": [
+          {
+            "Name": "EmptyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConditionalTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "CyclomaticComplexityTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ExpectedExceptionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "AssertionRouletteTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "UnknownTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantPrintTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SleepyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "IgnoreTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "DuplicateAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "MagicNumberTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EagerTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "BoolInAssertEqualSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EqualInAssertSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SensitiveEqualitySmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConstructorInitializationTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ObscureInLineSetUpSmell",
+            "Status": "Not Found"
+          }
+        ]
+      },
+      {
+        "Name": "ReturnsFormWithRequestVerificationToken",
+        "Body": "{\r\n    var response = await Client.GetAsync(\u0022/identity/account/login\u0022);\r\n    response.EnsureSuccessStatusCode();\r\n    var stringResponse = await response.Content.ReadAsStringAsync();\r\n    string token = WebPageHelpers.GetRequestVerificationToken(stringResponse);\r\n    Assert.True(token.Length \u003E 50);\r\n}",
+        "Smells": [
+          {
+            "Name": "EmptyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConditionalTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "CyclomaticComplexityTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ExpectedExceptionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "AssertionRouletteTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "UnknownTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantPrintTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SleepyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "IgnoreTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "DuplicateAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "MagicNumberTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EagerTestSmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "BoolInAssertEqualSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EqualInAssertSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SensitiveEqualitySmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConstructorInitializationTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ObscureInLineSetUpSmell",
+            "Status": "Not Found"
+          }
+        ]
+      },
+      {
+        "Name": "ReturnsSuccessfulSignInOnPostWithValidCredentials",
+        "Body": "{\r\n    var getResponse = await Client.GetAsync(\u0022/identity/account/login\u0022);\r\n    getResponse.EnsureSuccessStatusCode();\r\n    var stringResponse1 = await getResponse.Content.ReadAsStringAsync();\r\n    var keyValues = new List\u003CKeyValuePair\u003Cstring, string\u003E\u003E\r\n    {\r\n        new KeyValuePair\u003Cstring, string\u003E(\u0022Email\u0022, \u0022demouser@microsoft.com\u0022),\r\n        new KeyValuePair\u003Cstring, string\u003E(\u0022Password\u0022, \u0022Pass@word1\u0022),\r\n        new KeyValuePair\u003Cstring, string\u003E(WebPageHelpers.TokenTag, WebPageHelpers.GetRequestVerificationToken(stringResponse1))\r\n    };\r\n    var formContent = new FormUrlEncodedContent(keyValues);\r\n    var postResponse = await Client.PostAsync(\u0022/identity/account/login\u0022, formContent);\r\n    Assert.Equal(HttpStatusCode.Redirect, postResponse.StatusCode);\r\n    Assert.Equal(new System.Uri(\u0022/\u0022, UriKind.Relative), postResponse.Headers.Location);\r\n}",
+        "Smells": [
+          {
+            "Name": "EmptyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConditionalTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "CyclomaticComplexityTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ExpectedExceptionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "AssertionRouletteTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "UnknownTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantPrintTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SleepyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "IgnoreTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "DuplicateAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "MagicNumberTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EagerTestSmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "BoolInAssertEqualSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EqualInAssertSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SensitiveEqualitySmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConstructorInitializationTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ObscureInLineSetUpSmell",
+            "Status": "Not Found"
+          }
+        ]
+      },
+      {
+        "Name": "UpdatePhoneNumberProfile",
+        "Body": "{\r\n    //Login\r\n    var getResponse = await Client.GetAsync(\u0022/identity/account/login\u0022);\r\n    getResponse.EnsureSuccessStatusCode();\r\n    var stringResponse1 = await getResponse.Content.ReadAsStringAsync();\r\n    var keyValues = new List\u003CKeyValuePair\u003Cstring, string\u003E\u003E\r\n    {\r\n        new KeyValuePair\u003Cstring, string\u003E(\u0022Email\u0022, \u0022demouser@microsoft.com\u0022),\r\n        new KeyValuePair\u003Cstring, string\u003E(\u0022Password\u0022, \u0022Pass@word1\u0022),\r\n        new KeyValuePair\u003Cstring, string\u003E(WebPageHelpers.TokenTag, WebPageHelpers.GetRequestVerificationToken(stringResponse1))\r\n    };\r\n    var formContent = new FormUrlEncodedContent(keyValues);\r\n    await Client.PostAsync(\u0022/identity/account/login\u0022, formContent);\r\n    //Profile page\r\n    var profileResponse = await Client.GetAsync(\u0022/manage/my-account\u0022);\r\n    profileResponse.EnsureSuccessStatusCode();\r\n    var stringProfileResponse = await profileResponse.Content.ReadAsStringAsync();\r\n    //Update phone number\r\n    var updateProfileValues = new List\u003CKeyValuePair\u003Cstring, string\u003E\u003E\r\n    {\r\n        new KeyValuePair\u003Cstring, string\u003E(\u0022Email\u0022, \u0022demouser@microsoft.com\u0022),\r\n        new KeyValuePair\u003Cstring, string\u003E(\u0022PhoneNumber\u0022, \u002203656565\u0022),\r\n        new KeyValuePair\u003Cstring, string\u003E(WebPageHelpers.TokenTag, WebPageHelpers.GetRequestVerificationToken(stringProfileResponse))\r\n    };\r\n    var updateProfileContent = new FormUrlEncodedContent(updateProfileValues);\r\n    var postProfileResponse = await Client.PostAsync(\u0022/manage/my-account\u0022, updateProfileContent);\r\n    Assert.Equal(HttpStatusCode.Redirect, postProfileResponse.StatusCode);\r\n    var profileResponse2 = await Client.GetAsync(\u0022/manage/my-account\u0022);\r\n    var stringProfileResponse2 = await profileResponse2.Content.ReadAsStringAsync();\r\n    Assert.Contains(\u002203656565\u0022, stringProfileResponse2);\r\n}",
+        "Smells": [
+          {
+            "Name": "EmptyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConditionalTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "CyclomaticComplexityTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ExpectedExceptionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "AssertionRouletteTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "UnknownTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantPrintTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SleepyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "IgnoreTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "DuplicateAssertionTestSmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "MagicNumberTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EagerTestSmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "BoolInAssertEqualSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EqualInAssertSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SensitiveEqualitySmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConstructorInitializationTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ObscureInLineSetUpSmell",
+            "Status": "Found"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "CatalogControllerIndex",
+    "Message": null,
+    "Methods": [
+      {
+        "Name": "ReturnsHomePageWithProductListing",
+        "Body": "{\r\n    // Arrange \u0026 Act\r\n    var response = await Client.GetAsync(\u0022/\u0022);\r\n    response.EnsureSuccessStatusCode();\r\n    var stringResponse = await response.Content.ReadAsStringAsync();\r\n    // Assert\r\n    Assert.Contains(\u0022.NET Bot Black Sweatshirt\u0022, stringResponse);\r\n}",
+        "Smells": [
+          {
+            "Name": "EmptyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConditionalTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "CyclomaticComplexityTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ExpectedExceptionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "AssertionRouletteTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "UnknownTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantPrintTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SleepyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "IgnoreTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "DuplicateAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "MagicNumberTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EagerTestSmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "BoolInAssertEqualSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EqualInAssertSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SensitiveEqualitySmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConstructorInitializationTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ObscureInLineSetUpSmell",
+            "Status": "Not Found"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "OrderIndexOnGet",
+    "Message": null,
+    "Methods": [
+      {
+        "Name": "ReturnsRedirectGivenAnonymousUser",
+        "Body": "{\r\n    var response = await Client.GetAsync(\u0022/order/my-orders\u0022);\r\n    var redirectLocation = response.Headers.Location.OriginalString;\r\n    Assert.Equal(HttpStatusCode.Redirect, response.StatusCode);\r\n    Assert.Contains(\u0022/Account/Login\u0022, redirectLocation);\r\n}",
+        "Smells": [
+          {
+            "Name": "EmptyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConditionalTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "CyclomaticComplexityTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ExpectedExceptionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "AssertionRouletteTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "UnknownTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantPrintTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SleepyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "IgnoreTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "DuplicateAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "MagicNumberTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EagerTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "BoolInAssertEqualSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EqualInAssertSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SensitiveEqualitySmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConstructorInitializationTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ObscureInLineSetUpSmell",
+            "Status": "Not Found"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "BasketPageCheckout",
+    "Message": null,
+    "Methods": [
+      {
+        "Name": "RedirectsToLoginIfNotAuthenticated",
+        "Body": "{\r\n    // Load Home Page\r\n    var response = await Client.GetAsync(\u0022/\u0022);\r\n    response.EnsureSuccessStatusCode();\r\n    var stringResponse1 = await response.Content.ReadAsStringAsync();\r\n    string token = WebPageHelpers.GetRequestVerificationToken(stringResponse1);\r\n    // Add Item to Cart\r\n    var keyValues = new List\u003CKeyValuePair\u003Cstring, string\u003E\u003E\r\n    {\r\n        new KeyValuePair\u003Cstring, string\u003E(\u0022id\u0022, \u00222\u0022),\r\n        new KeyValuePair\u003Cstring, string\u003E(\u0022name\u0022, \u0022shirt\u0022),\r\n        new KeyValuePair\u003Cstring, string\u003E(\u0022price\u0022, \u002219.49\u0022),\r\n        new KeyValuePair\u003Cstring, string\u003E(\u0022__RequestVerificationToken\u0022, token)\r\n    };\r\n    var formContent = new FormUrlEncodedContent(keyValues);\r\n    var postResponse = await Client.PostAsync(\u0022/basket/index\u0022, formContent);\r\n    postResponse.EnsureSuccessStatusCode();\r\n    var stringResponse = await postResponse.Content.ReadAsStringAsync();\r\n    Assert.Contains(\u0022.NET Black \u0026amp; White Mug\u0022, stringResponse);\r\n    keyValues.Clear();\r\n    formContent = new FormUrlEncodedContent(keyValues);\r\n    var postResponse2 = await Client.PostAsync(\u0022/Basket/Checkout\u0022, formContent);\r\n    Assert.Contains(\u0022/Identity/Account/Login\u0022, postResponse2.RequestMessage.RequestUri.ToString());\r\n}",
+        "Smells": [
+          {
+            "Name": "EmptyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConditionalTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "CyclomaticComplexityTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ExpectedExceptionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "AssertionRouletteTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "UnknownTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantPrintTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SleepyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "IgnoreTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "DuplicateAssertionTestSmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "MagicNumberTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EagerTestSmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "BoolInAssertEqualSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EqualInAssertSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SensitiveEqualitySmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "ConstructorInitializationTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ObscureInLineSetUpSmell",
+            "Status": "Not Found"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "CheckoutTest",
+    "Message": null,
+    "Methods": [
+      {
+        "Name": "SucessfullyPay",
+        "Body": "{\r\n    // Load Home Page\r\n    var response = await Client.GetAsync(\u0022/\u0022);\r\n    response.EnsureSuccessStatusCode();\r\n    var stringResponse = await response.Content.ReadAsStringAsync();\r\n    // Add Item to Cart\r\n    var keyValues = new List\u003CKeyValuePair\u003Cstring, string\u003E\u003E\r\n    {\r\n        new KeyValuePair\u003Cstring, string\u003E(\u0022id\u0022, \u00222\u0022),\r\n        new KeyValuePair\u003Cstring, string\u003E(\u0022name\u0022, \u0022shirt\u0022),\r\n        new KeyValuePair\u003Cstring, string\u003E(\u0022price\u0022, \u002219.49\u0022),\r\n        new KeyValuePair\u003Cstring, string\u003E(WebPageHelpers.TokenTag, WebPageHelpers.GetRequestVerificationToken(stringResponse))\r\n    };\r\n    var formContent = new FormUrlEncodedContent(keyValues);\r\n    var postResponse = await Client.PostAsync(\u0022/basket/index\u0022, formContent);\r\n    postResponse.EnsureSuccessStatusCode();\r\n    var stringPostResponse = await postResponse.Content.ReadAsStringAsync();\r\n    Assert.Contains(\u0022.NET Black \u0026amp; White Mug\u0022, stringPostResponse);\r\n    //Load login page\r\n    var loginResponse = await Client.GetAsync(\u0022/Identity/Account/Login\u0022);\r\n    var longinKeyValues = new List\u003CKeyValuePair\u003Cstring, string\u003E\u003E\r\n    {\r\n        new KeyValuePair\u003Cstring, string\u003E(\u0022email\u0022, \u0022demouser@microsoft.com\u0022),\r\n        new KeyValuePair\u003Cstring, string\u003E(\u0022password\u0022, \u0022Pass@word1\u0022),\r\n        new KeyValuePair\u003Cstring, string\u003E(WebPageHelpers.TokenTag, WebPageHelpers.GetRequestVerificationToken(await loginResponse.Content.ReadAsStringAsync()))\r\n    };\r\n    var loginFormContent = new FormUrlEncodedContent(longinKeyValues);\r\n    var loginPostResponse = await Client.PostAsync(\u0022/Identity/Account/Login?ReturnUrl=%2FBasket%2FCheckout\u0022, loginFormContent);\r\n    var loginStringResponse = await loginPostResponse.Content.ReadAsStringAsync();\r\n    //Basket checkout (Pay now)\r\n    var checkOutKeyValues = new List\u003CKeyValuePair\u003Cstring, string\u003E\u003E\r\n    {\r\n        new KeyValuePair\u003Cstring, string\u003E(\u0022Items[0].Id\u0022, \u00222\u0022),\r\n        new KeyValuePair\u003Cstring, string\u003E(\u0022Items[0].Quantity\u0022, \u00221\u0022),\r\n        new KeyValuePair\u003Cstring, string\u003E(WebPageHelpers.TokenTag, WebPageHelpers.GetRequestVerificationToken(loginStringResponse))\r\n    };\r\n    var checkOutContent = new FormUrlEncodedContent(checkOutKeyValues);\r\n    var checkOutResponse = await Client.PostAsync(\u0022/basket/checkout\u0022, checkOutContent);\r\n    var stringCheckOutResponse = await checkOutResponse.Content.ReadAsStringAsync();\r\n    Assert.Contains(\u0022/Basket/Success\u0022, checkOutResponse.RequestMessage.RequestUri.ToString());\r\n    Assert.Contains(\u0022Thanks for your Order!\u0022, stringCheckOutResponse);\r\n}",
+        "Smells": [
+          {
+            "Name": "EmptyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConditionalTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "CyclomaticComplexityTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ExpectedExceptionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "AssertionRouletteTestSmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "UnknownTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantPrintTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SleepyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "IgnoreTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "DuplicateAssertionTestSmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "MagicNumberTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EagerTestSmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "BoolInAssertEqualSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EqualInAssertSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SensitiveEqualitySmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "ConstructorInitializationTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ObscureInLineSetUpSmell",
+            "Status": "Found"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "IndexTest",
+    "Message": null,
+    "Methods": [
+      {
+        "Name": "OnPostUpdateTo50Successfully",
+        "Body": "{\r\n    // Load Home Page\r\n    var response = await Client.GetAsync(\u0022/\u0022);\r\n    response.EnsureSuccessStatusCode();\r\n    var stringResponse1 = await response.Content.ReadAsStringAsync();\r\n    string token = WebPageHelpers.GetRequestVerificationToken(stringResponse1);\r\n    // Add Item to Cart\r\n    var keyValues = new List\u003CKeyValuePair\u003Cstring, string\u003E\u003E\r\n    {\r\n        new KeyValuePair\u003Cstring, string\u003E(\u0022id\u0022, \u00222\u0022),\r\n        new KeyValuePair\u003Cstring, string\u003E(\u0022name\u0022, \u0022shirt\u0022),\r\n        new KeyValuePair\u003Cstring, string\u003E(\u0022__RequestVerificationToken\u0022, token)\r\n    };\r\n    var formContent = new FormUrlEncodedContent(keyValues);\r\n    var postResponse = await Client.PostAsync(\u0022/basket/index\u0022, formContent);\r\n    postResponse.EnsureSuccessStatusCode();\r\n    var stringResponse = await postResponse.Content.ReadAsStringAsync();\r\n    Assert.Contains(\u0022.NET Black \u0026amp; White Mug\u0022, stringResponse);\r\n    //Update\r\n    var updateKeyValues = new List\u003CKeyValuePair\u003Cstring, string\u003E\u003E\r\n    {\r\n        new KeyValuePair\u003Cstring, string\u003E(\u0022Items[0].Id\u0022, WebPageHelpers.GetId(stringResponse)),\r\n        new KeyValuePair\u003Cstring, string\u003E(\u0022Items[0].Quantity\u0022, \u002249\u0022),\r\n        new KeyValuePair\u003Cstring, string\u003E(WebPageHelpers.TokenTag, WebPageHelpers.GetRequestVerificationToken(stringResponse))\r\n    };\r\n    var updateContent = new FormUrlEncodedContent(updateKeyValues);\r\n    var updateResponse = await Client.PostAsync(\u0022/basket/update\u0022, updateContent);\r\n    var stringUpdateResponse = await updateResponse.Content.ReadAsStringAsync();\r\n    Assert.Contains(\u0022/basket/update\u0022, updateResponse.RequestMessage.RequestUri.ToString());\r\n    decimal expectedTotalAmount = 416.50M;\r\n    Assert.Contains(expectedTotalAmount.ToString(\u0022N2\u0022), stringUpdateResponse);\r\n}",
+        "Smells": [
+          {
+            "Name": "EmptyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConditionalTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "CyclomaticComplexityTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ExpectedExceptionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "AssertionRouletteTestSmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "UnknownTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantPrintTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SleepyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "IgnoreTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "DuplicateAssertionTestSmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "MagicNumberTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EagerTestSmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "BoolInAssertEqualSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EqualInAssertSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SensitiveEqualitySmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "ConstructorInitializationTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ObscureInLineSetUpSmell",
+            "Status": "Found"
+          }
+        ]
+      },
+      {
+        "Name": "OnPostUpdateTo0EmptyBasket",
+        "Body": "{\r\n    // Load Home Page\r\n    var response = await Client.GetAsync(\u0022/\u0022);\r\n    response.EnsureSuccessStatusCode();\r\n    var stringResponse1 = await response.Content.ReadAsStringAsync();\r\n    string token = WebPageHelpers.GetRequestVerificationToken(stringResponse1);\r\n    // Add Item to Cart\r\n    var keyValues = new List\u003CKeyValuePair\u003Cstring, string\u003E\u003E\r\n    {\r\n        new KeyValuePair\u003Cstring, string\u003E(\u0022id\u0022, \u00222\u0022),\r\n        new KeyValuePair\u003Cstring, string\u003E(\u0022name\u0022, \u0022shirt\u0022),\r\n        new KeyValuePair\u003Cstring, string\u003E(\u0022__RequestVerificationToken\u0022, token)\r\n    };\r\n    var formContent = new FormUrlEncodedContent(keyValues);\r\n    var postResponse = await Client.PostAsync(\u0022/basket/index\u0022, formContent);\r\n    postResponse.EnsureSuccessStatusCode();\r\n    var stringResponse = await postResponse.Content.ReadAsStringAsync();\r\n    Assert.Contains(\u0022.NET Black \u0026amp; White Mug\u0022, stringResponse);\r\n    //Update\r\n    var updateKeyValues = new List\u003CKeyValuePair\u003Cstring, string\u003E\u003E\r\n    {\r\n        new KeyValuePair\u003Cstring, string\u003E(\u0022Items[0].Id\u0022, WebPageHelpers.GetId(stringResponse)),\r\n        new KeyValuePair\u003Cstring, string\u003E(\u0022Items[0].Quantity\u0022, \u00220\u0022),\r\n        new KeyValuePair\u003Cstring, string\u003E(WebPageHelpers.TokenTag, WebPageHelpers.GetRequestVerificationToken(stringResponse))\r\n    };\r\n    var updateContent = new FormUrlEncodedContent(updateKeyValues);\r\n    var updateResponse = await Client.PostAsync(\u0022/basket/update\u0022, updateContent);\r\n    var stringUpdateResponse = await updateResponse.Content.ReadAsStringAsync();\r\n    Assert.Contains(\u0022/basket/update\u0022, updateResponse.RequestMessage.RequestUri.ToString());\r\n    Assert.Contains(\u0022Basket is empty\u0022, stringUpdateResponse);\r\n}",
+        "Smells": [
+          {
+            "Name": "EmptyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConditionalTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "CyclomaticComplexityTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ExpectedExceptionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "AssertionRouletteTestSmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "UnknownTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantPrintTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SleepyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "IgnoreTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "DuplicateAssertionTestSmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "MagicNumberTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EagerTestSmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "BoolInAssertEqualSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EqualInAssertSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SensitiveEqualitySmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "ConstructorInitializationTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ObscureInLineSetUpSmell",
+            "Status": "Found"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "HomePageOnGet",
+    "Message": null,
+    "Methods": [
+      {
+        "Name": "ReturnsHomePageWithProductListing",
+        "Body": "{\r\n    // Arrange \u0026 Act\r\n    var response = await Client.GetAsync(\u0022/\u0022);\r\n    response.EnsureSuccessStatusCode();\r\n    var stringResponse = await response.Content.ReadAsStringAsync();\r\n    // Assert\r\n    Assert.Contains(\u0022.NET Bot Black Sweatshirt\u0022, stringResponse);\r\n}",
+        "Smells": [
+          {
+            "Name": "EmptyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConditionalTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "CyclomaticComplexityTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ExpectedExceptionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "AssertionRouletteTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "UnknownTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantPrintTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SleepyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "IgnoreTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "DuplicateAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "MagicNumberTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EagerTestSmell",
+            "Status": "Found"
+          },
+          {
+            "Name": "BoolInAssertEqualSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EqualInAssertSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SensitiveEqualitySmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConstructorInitializationTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ObscureInLineSetUpSmell",
+            "Status": "Not Found"
+          }
+        ]
+      }
+    ]
+  }
+]
