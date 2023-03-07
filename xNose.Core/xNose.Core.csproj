@@ -16,6 +16,13 @@
     <PackageReference Include="Microsoft.CodeAnalysis.Workspaces.MSBuild" Version="4.5.0" />
     <PackageReference Include="Microsoft.CodeAnalysis.Metrics" Version="3.3.4" />
     <PackageReference Include="F23.StringSimilarity" Version="5.1.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="ResultAnalysis\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ResultAnalysis\" />
+  </ItemGroup>
 </Project>
