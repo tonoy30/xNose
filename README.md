@@ -35,3 +35,23 @@ Here the `solution_path` is the path to your C# project solution file.
 This will generate a `JSON` file of the given project to the root path of that project. This `JSON` file will have the info about test smells of the given project.
 
 Otherwise, you can run the `xNose.sln` file with your visual studio. You have to provide the solution path of the desired project in the argument section.
+ 
+## JSON File Format
+
+```
+[
+    {
+        "Class_Name": ***,
+        "Message": <if Lack of Cohesion present for this class>,
+        "Methods": [
+            {
+                "Name":***,
+                "Body":***,
+                "Smells":[]
+            },
+            ...
+        ]
+    },
+    ...
+]
+```
