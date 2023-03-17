@@ -17,8 +17,8 @@ namespace xNose.Core
     {
         static async Task Main(string[] args)
         {
-            var test = new xNose.Core.ResultAnalysis.ResultAnalysis();
-            await test.AnalysisResult();
+            //var test = new xNose.Core.ResultAnalysis.ResultAnalysis();
+            //await test.AnalysisResult();
             // Attempt to set the version of MSBuild.
             var visualStudioInstances = MSBuildLocator.QueryVisualStudioInstances().ToArray();
             var instance = visualStudioInstances.Length == 1
@@ -41,18 +41,8 @@ namespace xNose.Core
                     // Print message for WorkspaceFailed event to help diagnosing project load failures.
                     workspace.WorkspaceFailed += (o, e) => Console.WriteLine(e.Diagnostic.Message);
 
-                    var solutionPath = //args[0];
-                                       "/Users/pp_paul/Documents/workstation/Test_Smell/graphql-platform/src/HotChocolate/Core/HotChocolate.Core.sln";
-                                       //"/Users/pp_paul/Documents/workstation/Test_Smell/graphql-platform/src/HotChocolate/Caching/HotChocolate.Caching.sln";
-                                       //"/Users/pp_paul/Documents/workstation/Test_Smell/graphql-platform/src/GreenDonut/GreenDonut.sln";
-                                       //"/Users/pp_paul/Documents/workstation/Test_Smell/refit/Refit.sln";
-                                       //"/Users/pp_paul/Documents/workstation/Test_Smell/Scrutor/Scrutor.sln";
-                    //"/Users/pp_paul/Documents/workstation/Test_Smell/IdentityServer4.Admin/Skoruba.IdentityServer4.Admin.sln";
-                    //"/Users/pp_paul/Documents/workstation/Test_Smell/c4sharp/C4Sharp.sln";
-                    //"/Users/pp_paul/Documents/workstation/Test_Smell/aspnetboilerplate/Abp.sln";
-                    //"/Users/pp_paul/Documents/workstation/Test_Smell/Ocelot/Ocelot.sln";
-                    //"/Users/pp_paul/Documents/workstation/Test_Smell/NLog/src/NLog.sln";
-                    //"/Users/pp_paul/Documents/workstation/Test_Smell/eShopOnWeb/eShopOnWeb.sln";
+                    var solutionPath = args[0];
+                                      
                     Console.WriteLine($"Loading solution '{solutionPath}'");
 
                     // Attach progress reporter so we print projects as they are loaded.

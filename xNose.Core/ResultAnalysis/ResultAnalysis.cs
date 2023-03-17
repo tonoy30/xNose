@@ -9,7 +9,6 @@ namespace xNose.Core.ResultAnalysis
 {
     public class ResultAnalysis
     {
-        private const string rootPath = "/Users/pp_paul/Documents/workstation/Test_Smell/xNose/results/";
         private const string LackOfCohesion = "LackOfCohesionTest";
 
         public async Task AnalysisResult()
