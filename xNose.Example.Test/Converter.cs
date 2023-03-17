@@ -15,5 +15,7 @@ namespace xNose.Example.Test
         {
             return nodeNumber > 0;
         }
+        public int Method1() { return 0; }
+        public int MEthod2() { return 1; }
     }
 }

@@ -1,3 +1,4 @@
+using Shouldly;
 namespace xNose.Example.Test
 {
     public class UnitTest
@@ -59,6 +60,25 @@ namespace xNose.Example.Test
         {
             Assert.True(Converter.IsCycleExist(4) == true);
             Assert.False(Converter.IsCycleExist(5) == false);
+        }
+        [Fact]
+        public void EagerTest()
+        {
+            var test = new Converter();
+            int x = test.Method1();
+            x.ShouldBe(2);
+        }
+        [Fact]
+        public void TestMethod()
+        {
+            var test = new Converter();
+            int x = test.Method1();
+            abrakidabra(x);
+        }
+        private void abrakidabra(int x)
+        {
+            int tt = 2;
+            Assert.Equal(tt, x);
         }
     }
 }

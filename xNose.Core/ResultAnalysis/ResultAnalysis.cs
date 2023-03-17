@@ -7,27 +7,28 @@ using Newtonsoft.Json;
 using xNose.Core.Reporters;
 namespace xNose.Core.ResultAnalysis
 {
-	public class ResultAnalysis
-	{
-		private const string rootPath = "/Users/pp_paul/Documents/workstation/Test_Smell/xNose/results/";
+    public class ResultAnalysis
+    {
+        private const string rootPath = "/Users/pp_paul/Documents/workstation/Test_Smell/xNose/results/";
         private const string LackOfCohesion = "LackOfCohesionTest";
 
         public async Task AnalysisResult()
-		{
+        {
             List<string> filePaths = new List<string>()
                 {
                     //rootPath + "abp_test_smell_reports.json",
                     //rootPath + "c4sharp_test_smell_reports.json",
                     //rootPath + "eshoponweb_test_smell_reports.json",
-                    //rootPath + "greendonut_test_smell_reports.json",
+                    rootPath + "greendonut_test_smell_reports.json",
                     //rootPath + "hotchocolate.caching_test_smell_reports.json",
-                    //rootPath + "hotchocolate.codegeneration_test_smell_reports.json",
                     //rootPath + "hotchocolate.core_test_smell_reports.json",
                     //rootPath + "nlog_test_smell_reports.json",
                     //rootPath + "ocelot_test_smell_reports.json",
-                    rootPath + "refit_test_smell_reports.json"
+                    //rootPath + "refit_test_smell_reports.json",
+                    //rootPath + "skoruba.identityserver4.admin_test_smell_reports.json",
+                    //rootPath + "scrutor_test_smell_reports.json"
                 };
-            foreach(string filePath in filePaths)
+            foreach (string filePath in filePaths)
             {
                 if (File.Exists(filePath))
                 {
@@ -46,7 +47,7 @@ namespace xNose.Core.ResultAnalysis
         private void DetailsAnalysis(List<ClassReporter> obj, string projectName)
         {
             Dictionary<string, Dictionary<string, int>> counter = new Dictionary<string, Dictionary<string, int>>();
-            foreach(ClassReporter classReporter in obj)
+            foreach (ClassReporter classReporter in obj)
             {
                 if (!counter.ContainsKey(classReporter.Name))
                 {
@@ -54,11 +55,11 @@ namespace xNose.Core.ResultAnalysis
                 }
                 if (!counter[classReporter.Name].ContainsKey(LackOfCohesion))
                 {
-                    counter[classReporter.Name][LackOfCohesion] = (classReporter.Message == null ? 0:1);
+                    counter[classReporter.Name][LackOfCohesion] = (classReporter.Message == null ? 0 : 1);
                 }
                 foreach (MethodReporter methodReporter in classReporter.Methods)
                 {
-                    foreach(var smell in methodReporter.Smells)
+                    foreach (var smell in methodReporter.Smells)
                     {
                         if (!counter[classReporter.Name].ContainsKey(smell.Name))
                         {
@@ -70,9 +71,9 @@ namespace xNose.Core.ResultAnalysis
             }
             Console.WriteLine($"\n\n**********************");
             Dictionary<string, int> totalCount = new Dictionary<string, int>();
-            foreach(var (className, smellCounter) in counter)
+            foreach (var (className, smellCounter) in counter)
             {
-                foreach( var (smellName, totalFound) in smellCounter)
+                foreach (var (smellName, totalFound) in smellCounter)
                 {
                     if (!totalCount.ContainsKey(smellName))
                     {
@@ -84,6 +85,8 @@ namespace xNose.Core.ResultAnalysis
             Console.WriteLine($"Project Name: {projectName}\n{ToDebugString(totalCount)}");
         }
     }
+
+
 }
 
 

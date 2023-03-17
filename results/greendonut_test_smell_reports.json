@@ -57,7 +57,7 @@
           },
           {
             "Name": "EagerTestSmell",
-            "Status": "Found"
+            "Status": "Not Found"
           },
           {
             "Name": "BoolInAssertEqualSmell",
@@ -265,7 +265,7 @@
           },
           {
             "Name": "AssertionRouletteTestSmell",
-            "Status": "Found"
+            "Status": "Not Found"
           },
           {
             "Name": "UnknownTestSmell",
@@ -661,7 +661,7 @@
           },
           {
             "Name": "AssertionRouletteTestSmell",
-            "Status": "Found"
+            "Status": "Not Found"
           },
           {
             "Name": "UnknownTestSmell",
@@ -1057,7 +1057,7 @@
           },
           {
             "Name": "AssertionRouletteTestSmell",
-            "Status": "Found"
+            "Status": "Not Found"
           },
           {
             "Name": "UnknownTestSmell",
@@ -1453,7 +1453,7 @@
           },
           {
             "Name": "AssertionRouletteTestSmell",
-            "Status": "Found"
+            "Status": "Not Found"
           },
           {
             "Name": "UnknownTestSmell",
@@ -1849,7 +1849,7 @@
           },
           {
             "Name": "AssertionRouletteTestSmell",
-            "Status": "Found"
+            "Status": "Not Found"
           },
           {
             "Name": "UnknownTestSmell",
@@ -3379,7 +3379,7 @@
           },
           {
             "Name": "DuplicateAssertionTestSmell",
-            "Status": "Found"
+            "Status": "Not Found"
           },
           {
             "Name": "MagicNumberTestSmell",
@@ -3515,7 +3515,7 @@
           },
           {
             "Name": "UnknownTestSmell",
-            "Status": "Found"
+            "Status": "Not Found"
           },
           {
             "Name": "RedundantPrintTestSmell",
@@ -3593,7 +3593,7 @@
           },
           {
             "Name": "UnknownTestSmell",
-            "Status": "Found"
+            "Status": "Not Found"
           },
           {
             "Name": "RedundantPrintTestSmell",
@@ -3671,7 +3671,7 @@
           },
           {
             "Name": "UnknownTestSmell",
-            "Status": "Found"
+            "Status": "Not Found"
           },
           {
             "Name": "RedundantPrintTestSmell",
@@ -3749,7 +3749,7 @@
           },
           {
             "Name": "UnknownTestSmell",
-            "Status": "Found"
+            "Status": "Not Found"
           },
           {
             "Name": "RedundantPrintTestSmell",
@@ -3827,7 +3827,7 @@
           },
           {
             "Name": "UnknownTestSmell",
-            "Status": "Found"
+            "Status": "Not Found"
           },
           {
             "Name": "RedundantPrintTestSmell",
@@ -3905,7 +3905,7 @@
           },
           {
             "Name": "UnknownTestSmell",
-            "Status": "Found"
+            "Status": "Not Found"
           },
           {
             "Name": "RedundantPrintTestSmell",
@@ -4061,7 +4061,7 @@
           },
           {
             "Name": "UnknownTestSmell",
-            "Status": "Found"
+            "Status": "Not Found"
           },
           {
             "Name": "RedundantPrintTestSmell",
@@ -4139,7 +4139,7 @@
           },
           {
             "Name": "UnknownTestSmell",
-            "Status": "Found"
+            "Status": "Not Found"
           },
           {
             "Name": "RedundantPrintTestSmell",
@@ -4295,7 +4295,7 @@
           },
           {
             "Name": "UnknownTestSmell",
-            "Status": "Found"
+            "Status": "Not Found"
           },
           {
             "Name": "RedundantPrintTestSmell",
@@ -4373,7 +4373,7 @@
           },
           {
             "Name": "UnknownTestSmell",
-            "Status": "Found"
+            "Status": "Not Found"
           },
           {
             "Name": "RedundantPrintTestSmell",
@@ -4451,7 +4451,7 @@
           },
           {
             "Name": "UnknownTestSmell",
-            "Status": "Found"
+            "Status": "Not Found"
           },
           {
             "Name": "RedundantPrintTestSmell",
@@ -4529,7 +4529,7 @@
           },
           {
             "Name": "UnknownTestSmell",
-            "Status": "Found"
+            "Status": "Not Found"
           },
           {
             "Name": "RedundantPrintTestSmell",
@@ -5251,7 +5251,7 @@
           },
           {
             "Name": "DuplicateAssertionTestSmell",
-            "Status": "Found"
+            "Status": "Not Found"
           },
           {
             "Name": "MagicNumberTestSmell",
@@ -5309,7 +5309,7 @@
           },
           {
             "Name": "UnknownTestSmell",
-            "Status": "Found"
+            "Status": "Not Found"
           },
           {
             "Name": "RedundantPrintTestSmell",
@@ -5387,7 +5387,7 @@
           },
           {
             "Name": "UnknownTestSmell",
-            "Status": "Found"
+            "Status": "Not Found"
           },
           {
             "Name": "RedundantPrintTestSmell",
@@ -5465,7 +5465,7 @@
           },
           {
             "Name": "UnknownTestSmell",
-            "Status": "Found"
+            "Status": "Not Found"
           },
           {
             "Name": "RedundantPrintTestSmell",
@@ -5543,7 +5543,7 @@
           },
           {
             "Name": "UnknownTestSmell",
-            "Status": "Found"
+            "Status": "Not Found"
           },
           {
             "Name": "RedundantPrintTestSmell",
@@ -5699,7 +5699,7 @@
           },
           {
             "Name": "UnknownTestSmell",
-            "Status": "Found"
+            "Status": "Not Found"
           },
           {
             "Name": "RedundantPrintTestSmell",
@@ -5777,7 +5777,7 @@
           },
           {
             "Name": "UnknownTestSmell",
-            "Status": "Found"
+            "Status": "Not Found"
           },
           {
             "Name": "RedundantPrintTestSmell",
@@ -5933,7 +5933,7 @@
           },
           {
             "Name": "UnknownTestSmell",
-            "Status": "Found"
+            "Status": "Not Found"
           },
           {
             "Name": "RedundantPrintTestSmell",
@@ -6577,7 +6577,7 @@
           },
           {
             "Name": "DuplicateAssertionTestSmell",
-            "Status": "Found"
+            "Status": "Not Found"
           },
           {
             "Name": "MagicNumberTestSmell",
@@ -8713,7 +8713,7 @@
           },
           {
             "Name": "DuplicateAssertionTestSmell",
-            "Status": "Found"
+            "Status": "Not Found"
           },
           {
             "Name": "MagicNumberTestSmell",
@@ -8869,7 +8869,7 @@
           },
           {
             "Name": "DuplicateAssertionTestSmell",
-            "Status": "Found"
+            "Status": "Not Found"
           },
           {
             "Name": "MagicNumberTestSmell",
@@ -9025,7 +9025,7 @@
           },
           {
             "Name": "DuplicateAssertionTestSmell",
-            "Status": "Found"
+            "Status": "Not Found"
           },
           {
             "Name": "MagicNumberTestSmell",
@@ -9103,7 +9103,7 @@
           },
           {
             "Name": "DuplicateAssertionTestSmell",
-            "Status": "Found"
+            "Status": "Not Found"
           },
           {
             "Name": "MagicNumberTestSmell",
@@ -9181,7 +9181,7 @@
           },
           {
             "Name": "DuplicateAssertionTestSmell",
-            "Status": "Found"
+            "Status": "Not Found"
           },
           {
             "Name": "MagicNumberTestSmell",
