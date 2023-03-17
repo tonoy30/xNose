@@ -18,7 +18,7 @@ namespace xNose.Core.ResultAnalysis
                     //rootPath + "abp_test_smell_reports.json",
                     //rootPath + "c4sharp_test_smell_reports.json",
                     //rootPath + "eshoponweb_test_smell_reports.json",
-                    rootPath + "greendonut_test_smell_reports.json",
+                    //rootPath + "greendonut_test_smell_reports.json",
                     //rootPath + "hotchocolate.caching_test_smell_reports.json",
                     //rootPath + "hotchocolate.core_test_smell_reports.json",
                     //rootPath + "nlog_test_smell_reports.json",
