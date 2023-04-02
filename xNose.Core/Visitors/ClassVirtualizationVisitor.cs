@@ -3,6 +3,7 @@ using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 using System.Reflection;
 using System.Text.RegularExpressions;
 
@@ -13,23 +14,36 @@ namespace xNose.Core.Visitors
         const string pattern = @"Test";
 
         public Dictionary<ClassDeclarationSyntax, List<MethodDeclarationSyntax>> ClassWithMethods { get; set; } = new Dictionary<ClassDeclarationSyntax, List<MethodDeclarationSyntax>>();
-
+        public Dictionary<ClassDeclarationSyntax, List<MethodDeclarationSyntax>> ClassWithOtherMethods { get; set; } = new Dictionary<ClassDeclarationSyntax, List<MethodDeclarationSyntax>>();
         public override SyntaxNode VisitClassDeclaration(ClassDeclarationSyntax node)
         {
             node = (ClassDeclarationSyntax)base.VisitClassDeclaration(node);
            
             var startOrEndWithTest = Regex.IsMatch(node.Identifier.ValueText, pattern);
             
-            if(startOrEndWithTest)
+            //if(startOrEndWithTest)
             {
 				var root = node.SyntaxTree.GetRoot();
                 var methods = root.DescendantNodes()
                     .OfType<MethodDeclarationSyntax>()
-                    .Where(m => Regex.IsMatch(m.Identifier.ValueText, pattern)).ToList();
-                ClassWithMethods.TryAdd(node, methods);
-				return node;
+                    .Where(m => m.AttributeLists.SelectMany(a => a.Attributes).Select(b => b.Name.ToString()).Any(c=>c.Equals("Fact", StringComparison.InvariantCultureIgnoreCase)))
+                    .ToList();
+                var otherMethods = root.DescendantNodes()
+                    .OfType<MethodDeclarationSyntax>().Except(methods).ToList();
+                if (methods!=null && methods.Count!=0)
+                {
+                    ClassWithMethods.TryAdd(node, methods);
+                    if (otherMethods != null && otherMethods.Count != 0)
+                    {
+                        ClassWithOtherMethods.TryAdd(node, otherMethods);
+                    }
+                    return node;
+                }
+                
+
+                return null;
             }
-            return null;
+            //return null;
         }
     }
 }

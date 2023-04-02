@@ -1,0 +1,398 @@
+[
+  {
+    "Name": "ExportingDiagramTests",
+    "Message": null,
+    "Methods": [
+      {
+        "Name": "TestExportWithoutImages",
+        "Body": "{\r\n    var diagrams = new Diagram[]\r\n    {\r\n        new ContextDiagram().Build()with\r\n        {\r\n            Title = \u0022Diagram\u0022\r\n        },\r\n        new ContainerDiagram().Build()with\r\n        {\r\n            Title = \u0022Diagram\u0022\r\n        },\r\n        new ComponentDiagram().Build()with\r\n        {\r\n            Title = \u0022Diagram\u0022\r\n        },\r\n        new DeploymentDiagram().Build()with\r\n        {\r\n            Title = \u0022Diagram\u0022\r\n        }\r\n    };\r\n    new PlantumlContext().Export(diagrams);\r\n    VerifyIfResourceFilesExists();\r\n    VerifyIfPumlFilesExists(\u0022diagram\u0022);\r\n    VerifyIfPngFilesNonExists(\u0022diagram\u0022);\r\n}",
+        "Smells": [
+          {
+            "Name": "EmptyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConditionalTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "CyclomaticComplexityTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ExpectedExceptionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "AssertionRouletteTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "UnknownTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantPrintTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SleepyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "IgnoreTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "DuplicateAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "MagicNumberTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EagerTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "BoolInAssertEqualSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EqualInAssertSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SensitiveEqualitySmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConstructorInitializationTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ObscureInLineSetUpSmell",
+            "Status": "Not Found"
+          }
+        ]
+      },
+      {
+        "Name": "TestExportToSpecifiedPath",
+        "Body": "{\r\n    const string path = \u0022c4temp\u0022;\r\n    Setup(path);\r\n    var diagrams = new Diagram[]\r\n    {\r\n        new ContextDiagram().Build()with\r\n        {\r\n            Title = \u0022Diagram\u0022\r\n        },\r\n        new ContainerDiagram().Build()with\r\n        {\r\n            Title = \u0022Diagram\u0022\r\n        },\r\n        new ComponentDiagram().Build()with\r\n        {\r\n            Title = \u0022Diagram\u0022\r\n        },\r\n        new DeploymentDiagram().Build()with\r\n        {\r\n            Title = \u0022Diagram\u0022\r\n        }\r\n    };\r\n    var pathSave = new DirectoryInfo(path).FullName;\r\n    new PlantumlContext().UseDiagramImageBuilder().Export(pathSave, diagrams);\r\n    VerifyIfResourceFilesExists(path);\r\n    VerifyIfPumlFilesExists(\u0022diagram\u0022, path);\r\n    VerifyIfPngFilesExists(\u0022diagram\u0022, path);\r\n    CleanUp(path);\r\n}",
+        "Smells": [
+          {
+            "Name": "EmptyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConditionalTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "CyclomaticComplexityTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ExpectedExceptionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "AssertionRouletteTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "UnknownTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantPrintTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SleepyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "IgnoreTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "DuplicateAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "MagicNumberTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EagerTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "BoolInAssertEqualSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EqualInAssertSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SensitiveEqualitySmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConstructorInitializationTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ObscureInLineSetUpSmell",
+            "Status": "Not Found"
+          }
+        ]
+      },
+      {
+        "Name": "TestExportOnlyPngToDefaultPath",
+        "Body": "{\r\n    var diagrams = new Diagram[]\r\n    {\r\n        new ContextDiagram().Build()with\r\n        {\r\n            Title = \u0022Diagram\u0022\r\n        },\r\n        new ContainerDiagram().Build()with\r\n        {\r\n            Title = \u0022Diagram\u0022\r\n        },\r\n        new ComponentDiagram().Build()with\r\n        {\r\n            Title = \u0022Diagram\u0022\r\n        },\r\n        new DeploymentDiagram().Build()with\r\n        {\r\n            Title = \u0022Diagram\u0022\r\n        }\r\n    };\r\n    new PlantumlContext().UseDiagramImageBuilder().Export(diagrams);\r\n    VerifyIfResourceFilesExists();\r\n    VerifyIfPumlFilesExists(\u0022diagram\u0022);\r\n    VerifyIfPngFilesExists(\u0022diagram\u0022);\r\n    VerifyIfSvgFilesNonExists(\u0022diagram\u0022);\r\n}",
+        "Smells": [
+          {
+            "Name": "EmptyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConditionalTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "CyclomaticComplexityTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ExpectedExceptionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "AssertionRouletteTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "UnknownTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantPrintTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SleepyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "IgnoreTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "DuplicateAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "MagicNumberTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EagerTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "BoolInAssertEqualSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EqualInAssertSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SensitiveEqualitySmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConstructorInitializationTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ObscureInLineSetUpSmell",
+            "Status": "Not Found"
+          }
+        ]
+      },
+      {
+        "Name": "TestExportOnlySvgToDefaultPath",
+        "Body": "{\r\n    var diagrams = new Diagram[]\r\n    {\r\n        new ContextDiagram().Build()with\r\n        {\r\n            Title = \u0022Diagram\u0022\r\n        },\r\n        new ContainerDiagram().Build()with\r\n        {\r\n            Title = \u0022Diagram\u0022\r\n        },\r\n        new ComponentDiagram().Build()with\r\n        {\r\n            Title = \u0022Diagram\u0022\r\n        },\r\n        new DeploymentDiagram().Build()with\r\n        {\r\n            Title = \u0022Diagram\u0022\r\n        }\r\n    };\r\n    new PlantumlContext().UseDiagramSvgImageBuilder().Export(diagrams);\r\n    VerifyIfResourceFilesExists();\r\n    VerifyIfPumlFilesExists(\u0022diagram\u0022);\r\n    VerifyIfPngFilesNonExists(\u0022diagram\u0022);\r\n    VerifyIfSvgFilesExists(\u0022diagram\u0022);\r\n}",
+        "Smells": [
+          {
+            "Name": "EmptyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConditionalTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "CyclomaticComplexityTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ExpectedExceptionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "AssertionRouletteTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "UnknownTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantPrintTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SleepyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "IgnoreTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "DuplicateAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "MagicNumberTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EagerTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "BoolInAssertEqualSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EqualInAssertSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SensitiveEqualitySmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConstructorInitializationTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ObscureInLineSetUpSmell",
+            "Status": "Not Found"
+          }
+        ]
+      },
+      {
+        "Name": "TestExportPngAndSvgToDefaultPath",
+        "Body": "{\r\n    var diagrams = new Diagram[]\r\n    {\r\n        new ContextDiagram().Build()with\r\n        {\r\n            Title = \u0022Diagram\u0022\r\n        },\r\n        new ContainerDiagram().Build()with\r\n        {\r\n            Title = \u0022Diagram\u0022\r\n        },\r\n        new ComponentDiagram().Build()with\r\n        {\r\n            Title = \u0022Diagram\u0022\r\n        },\r\n        new DeploymentDiagram().Build()with\r\n        {\r\n            Title = \u0022Diagram\u0022\r\n        }\r\n    };\r\n    new PlantumlContext().UseDiagramImageBuilder().UseDiagramSvgImageBuilder().Export(diagrams);\r\n    VerifyIfResourceFilesExists();\r\n    VerifyIfPumlFilesExists(\u0022diagram\u0022);\r\n    VerifyIfPngFilesExists(\u0022diagram\u0022);\r\n    VerifyIfSvgFilesExists(\u0022diagram\u0022);\r\n}",
+        "Smells": [
+          {
+            "Name": "EmptyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConditionalTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "CyclomaticComplexityTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ExpectedExceptionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "AssertionRouletteTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "UnknownTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantPrintTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SleepyTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "IgnoreTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "RedundantAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "DuplicateAssertionTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "MagicNumberTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EagerTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "BoolInAssertEqualSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "EqualInAssertSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "SensitiveEqualitySmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ConstructorInitializationTestSmell",
+            "Status": "Not Found"
+          },
+          {
+            "Name": "ObscureInLineSetUpSmell",
+            "Status": "Not Found"
+          }
+        ]
+      }
+    ]
+  }
+]

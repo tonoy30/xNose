@@ -5,9 +5,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using F23.StringSimilarity;
 using xNose.Core.Reporters;
 using xNose.Core.Smells;
 using xNose.Core.Visitors;
+using xNose.Core.ResultAnalysis;
 
 namespace xNose.Core
 {
@@ -15,7 +17,10 @@ namespace xNose.Core
     {
         static async Task Main(string[] args)
         {
+
             // Attempt to set the version of MSBuild.
+            Console.WriteLine(args.ToString());
+
             var visualStudioInstances = MSBuildLocator.QueryVisualStudioInstances().ToArray();
             var instance = visualStudioInstances.Length == 1
                 // If there is only one instance of MSBuild on this machine, set that as the one to use.
@@ -36,6 +41,7 @@ namespace xNose.Core
                 workspace.WorkspaceFailed += (o, e) => Console.WriteLine(e.Diagnostic.Message);
 
                 var solutionPath = args[0];
+
                 Console.WriteLine($"Loading solution '{solutionPath}'");
 
                 // Attach progress reporter so we print projects as they are loaded.
@@ -43,67 +49,152 @@ namespace xNose.Core
                 Console.WriteLine($"Finished loading solution '{solutionPath}'");
 
                 // TODO: Do analysis on the projects in the loaded solution
-                var project = solution.Projects.FirstOrDefault(p => string.Equals(p.Name, "xNose.Example.Test"));
-
-                var compilation = await project.GetCompilationAsync();
-
-                var classVisitor = new ClassVirtualizationVisitor();
-
-                foreach (var syntaxTree in compilation.SyntaxTrees)
-                {
-                    classVisitor.Visit(syntaxTree.GetRoot());
-                }
-
-
-                var testSmells = new List<ASmell> {
-                    new EmptyTestSmell(),
-                    new ConditionalTestSmell(),
-                    new CyclomaticComplexityTestSmell(),
-                    new ExpectedExceptionTestSmell(),
-                    new AssertionRouletteTestSmell(),
-                    new UnknownTestSmell(),
-                    new RedundantPrintTestSmell(),
-                    new SleepyTestSmell(),
-                    new IgnoreTestSmell(),
-                    new RedundantAssertionTestSmell(),
-                    new DuplicateAssertionTestSmell(),
-                    new MagicNumberTestSmell(),
-                    new EagerTestSmell()
-                };
-
+                var projects = solution.Projects.Select(p => p).Where(p => p.Name.Contains("Test", StringComparison.InvariantCultureIgnoreCase));
+                List<string> counter = new List<string>();
                 var reporter = new JsonFileReporter(solutionPath);
-
-                foreach (var (classDeclaration, methodDeclarations) in classVisitor.ClassWithMethods)
+                int testClassCount = 0, testMethodCount = 0;
+                foreach (var project in projects)
                 {
-                    var classReporter = new ClassReporter
+                    if (counter.Contains(project.FilePath.ToString()))
                     {
-                        Name = classDeclaration.Identifier.ValueText
-                    };
-                    foreach (var methodDeclaration in methodDeclarations)
-                    {
-                        var methodReporter = new MethodReporter
-                        {
-                            Name = methodDeclaration.Identifier.Text,
-                            Body = methodDeclaration.Body.NormalizeWhitespace().ToFullString()
-                        };
-                        foreach (var smell in testSmells)
-                        {
-                            smell.Node = methodDeclaration;
-                            var message = new MethodReporterMessage
-                            {
-                                Name = smell.Name(),
-                                Status = smell.HasSmell() ? "Found" : "Not Found"
-                            };
-                            methodReporter.AddMessage(message);
-                        }
-                        classReporter.AddMethodReport(methodReporter);
+                        continue;
                     }
-                    reporter.AddClassReporter(classReporter);
+                    Console.WriteLine(project.AssemblyName.ToString());
+                    Console.WriteLine(project.DefaultNamespace.ToString());
+                    counter.Add(project.FilePath.ToString());
+
+                    var compilation = await project.GetCompilationAsync();
+
+                    var classVisitor = new ClassVirtualizationVisitor();
+
+                    foreach (var syntaxTree in compilation.SyntaxTrees)
+                    {
+                        classVisitor.Visit(syntaxTree.GetRoot());
+                    }
+
+
+                    var testSmells = new List<ASmell> {
+                                        new EmptyTestSmell(),
+                                        new ConditionalTestSmell(),
+                                        new CyclomaticComplexityTestSmell(),
+                                        new ExpectedExceptionTestSmell(),
+                                        new AssertionRouletteTestSmell(),
+                                        new UnknownTestSmell(),
+                                        new RedundantPrintTestSmell(),
+                                        new SleepyTestSmell(),
+                                        new IgnoreTestSmell(),
+                                        new RedundantAssertionTestSmell(),
+                                        new DuplicateAssertionTestSmell(),
+                                        new MagicNumberTestSmell(),
+                                        new EagerTestSmell(),
+                                        new BoolInAssertEqualSmell(),
+                                        new EqualInAssertSmell(),
+                                        new SensitiveEqualitySmell(),
+                                        new ConstructorInitializationTestSmell(),
+                                        new ObscureInLineSetUpSmell()
+                                    };
+                    Dictionary<string, Dictionary<string, bool>> otherMethodTestSmell = new Dictionary<string, Dictionary<string, bool>>();
+                    foreach (var (classDeclaration, methodDeclarations) in classVisitor.ClassWithOtherMethods)
+                    {
+                        foreach (var methodDeclaration in methodDeclarations)
+                        {
+                            if (methodDeclaration.Body == null)
+                                continue;
+                            if (!otherMethodTestSmell.ContainsKey(methodDeclaration.Identifier.Text))
+                                otherMethodTestSmell[methodDeclaration.Identifier.Text] = new Dictionary<string, bool>();
+                            foreach (var smell in testSmells)
+                            {
+                                smell.Node = methodDeclaration;
+
+                                otherMethodTestSmell[methodDeclaration.Identifier.Text][smell.Name()] = smell.HasSmell();
+                            }
+
+                        }
+                    }
+                    Console.WriteLine("Break");
+                    foreach (var smell in testSmells)
+                    {
+                        smell.otherMethodTestSmell = otherMethodTestSmell;
+                    }
+                    foreach (var (classDeclaration, methodDeclarations) in classVisitor.ClassWithMethods)
+                    {
+                        List<string> methodBodyCollection = new List<string>();
+                        var classReporter = new ClassReporter
+                        {
+                            Name = classDeclaration.Identifier.ValueText
+                        };
+                        testClassCount++;
+                        testMethodCount += methodDeclarations.Count;
+                        Console.WriteLine($"Analysis started for class: {classReporter.Name}, ProjectName: {project.Name.ToString()}");
+                        foreach (var methodDeclaration in methodDeclarations)
+                        {
+                            if (methodDeclaration.Body == null)
+                            {
+                                string errorLine = $"Could not load the body for function: {methodDeclaration.Identifier.Text} in class: {classReporter.Name}";
+                                Console.WriteLine(errorLine);
+                                var tempMethodReporter = new MethodReporter
+                                {
+                                    Name = methodDeclaration.Identifier.Text,
+                                    Body = errorLine
+                                };
+                                classReporter.AddMethodReport(tempMethodReporter);
+                                continue;
+                            }
+                            var methodReporter = new MethodReporter
+                            {
+                                Name = methodDeclaration.Identifier.Text,
+                                Body = methodDeclaration.Body.NormalizeWhitespace().ToFullString()
+                            };
+                            methodBodyCollection.Add(methodReporter.Body);
+                            foreach (var smell in testSmells)
+                            {
+                                smell.Node = methodDeclaration;
+                                var message = new MethodReporterMessage
+                                {
+                                    Name = smell.Name(),
+                                    Status = smell.HasSmell() ? "Found" : "Not Found"
+                                };
+                                methodReporter.AddMessage(message);
+                            }
+                            classReporter.AddMethodReport(methodReporter);
+                        }
+                        if (HasLackOfCohesion(methodBodyCollection))
+                        {
+                            classReporter.Message = "This class has Lack of Cohesion of Test Cases";
+                        }
+
+                        reporter.AddClassReporter(classReporter);
+                        Console.WriteLine($"Analysis ended for class: {classReporter.Name}");
+                    }
                 }
+                Console.WriteLine($"Total Test projects: {counter.Count()}, testClassCount: {testClassCount}, testMethodCount: {testMethodCount}");
                 await reporter.SaveReportAsync();
+                //}
             }
         }
+        private static bool HasLackOfCohesion(List<string> methodBodyCollection)
+        {
+            var cosineInstance = new Cosine();
+            double cosineScoreSum = 0.0;
+            int pairCount = 0;
+            for (int i = 0; i < methodBodyCollection.Count; i++)
+            {
+                for (int j = 0; j < methodBodyCollection.Count; j++)
+                {
+                    if (i != j)
+                    {
+                        cosineScoreSum += cosineInstance.Similarity(methodBodyCollection[i], methodBodyCollection[j]);
+                        pairCount++;
+                    }
+                }
+            }
+            if (pairCount <= 0)
+                return false;
 
+            var testClassCohesionScore = cosineScoreSum / (double)pairCount;
+            Console.WriteLine(testClassCohesionScore);
+            return ((1.0 - testClassCohesionScore) >= 0.6);//from paper
+        }
         private static VisualStudioInstance SelectVisualStudioInstance(VisualStudioInstance[] visualStudioInstances)
         {
             Console.WriteLine("Multiple installs of MSBuild detected please select one:");

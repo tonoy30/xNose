@@ -12,7 +12,7 @@ namespace xNose.Core.Smells
 
         public override bool HasSmell()
         {
-            return Node is not null && Node.Body.Statements.Count == 0;
+            return Node is not null && Node.Body?.Statements.Count == 0;
         }
 
     }

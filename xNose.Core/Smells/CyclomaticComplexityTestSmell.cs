@@ -19,7 +19,16 @@ namespace xNose.Core.Smells
 							+ root.DescendantNodes()
 									.OfType<ElseClauseSyntax>()
 									.Count()
-							+ root.DescendantNodes()
+                            + root.DescendantNodes()
+                                    .OfType<ForEachStatementSyntax>()
+                                    .Count()
+                            + root.DescendantNodes()
+                                    .OfType<WhileStatementSyntax>()
+                                    .Count()
+                            + root.DescendantNodes()
+                                    .OfType<ForStatementSyntax>()
+                                    .Count()
+                            + root.DescendantNodes()
 									.OfType<SwitchStatementSyntax>()
 									.Count() + 1;
 			return complexity > 10;
